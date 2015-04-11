@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="login" extends="struts-default">
+		<action name="login" class="cl.usach.lab1.finanzas.actions.InicioAction"
+			method="execute">
+			<result type="redirectAction" name="success">
+				<param name="actionName">dashboard</param>
+				<param name="namespace">/intranet</param>
+			</result>
+			<!-- <result name="success">/web/index.jsp</result> -->
+			<result name="error">/login.jsp</result>
+		</action>
+	</package>
+	<package name="intranet" extends="struts-default" namespace="/intranet">
+		<action name="dashboard" class="cl.usach.lab1.finanzas.actions.InitIntranetAction">
+			<result name="success">/web/dashboard.jsp</result>
+		</action>
+	</package>
+	
+</struts>
