@@ -5,7 +5,7 @@
 <struts>
 	<constant name="struts.devMode" value="true" />
 	<package name="login" extends="struts-default">
-		<action name="login" class="cl.usach.lab1.finanzas.actions.InicioAction"
+		<action name="login" class="cl.usach.lab1.autorizador.actions.InicioAction"
 			method="execute">
 			<result type="redirectAction" name="success">
 				<param name="actionName">dashboard</param>
@@ -17,7 +17,7 @@
 	</package>
 	<package name="intranet" extends="struts-default" namespace="/intranet">
 		<action name="dashboard" class="cl.usach.lab1.finanzas.actions.InitIntranetAction">
-			<result name="success">/web/dashboard.jsp</result>
+			<result name="success">/finanzas/dashboard.jsp</result>
 		</action>
 	</package>
 	

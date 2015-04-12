@@ -18,18 +18,4 @@ public class ImplementacionFinanzas extends UnicastRemoteObject implements
 		logger = Logger.getLogger(getClass().getName());
         logger.log(Level.INFO, "Se ha instanciado la clase de ImplementacionFinanzas");
 	}
-	
-	@Override
-	public boolean loginUsuario(String usuario, String password)
-			throws RemoteException {
-		//TODO implementar la conexion a BD y validar al usuario
-		logger.log(Level.INFO, "Login usuario...");
-		if(usuario.isEmpty()==false && password.isEmpty()==false){
-			logger.log(Level.INFO, "Login usuario...ok");
-			return true;
-		}
-		logger.log(Level.INFO, "Login usuario...nok");
-		return false;
-	}
-
 }

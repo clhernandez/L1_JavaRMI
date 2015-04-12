@@ -5,7 +5,9 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import cl.usach.lab1.autorizador.impl.ImplementacionAutorizador;
 import cl.usach.lab1.finanzas.rmi.impl.ImplementacionFinanzas;
+import cl.usach.lab1.rrhh.rmi.impl.ImplementacionRrhh;
 
 /**
  *
@@ -21,6 +23,10 @@ public class Servidor {
     public static int puerto = 2015;
     public static ImplementacionFinanzas objetoLocalFinanzas;
     public static String nombreReferenciaFinanzasRemota = "FINANZAS-RMI";
+    public static ImplementacionAutorizador objetoLocalAutorizador;
+    public static String nombreReferenciaAutorizadorRemoto = "AUTORIZADOR-RMI";
+    public static ImplementacionRrhh objetoLocalRrhh;
+    public static String nombreReferenciaRrhhRemoto = "RRHH-RMI";
 
     static Logger logger;
 
@@ -30,6 +36,8 @@ public class Servidor {
         //Se inicializa el objeto, el cual podria ser llamado remotamente
         try {
             objetoLocalFinanzas = new ImplementacionFinanzas();
+            objetoLocalAutorizador= new ImplementacionAutorizador();
+            objetoLocalRrhh = new ImplementacionRrhh();
         } catch (RemoteException re) {
             //En caso de haber un error, es mostrado por un mensaje
             logger.log(Level.SEVERE, re.getMessage());
@@ -40,7 +48,7 @@ public class Servidor {
 
         servidor = new ServidorRMI();
 
-        boolean resultadoConexion = servidor.iniciarConexion(objetoLocalFinanzas, nombreReferenciaFinanzasRemota,  puerto);
+        boolean resultadoConexion = servidor.iniciarConexion(objetoLocalFinanzas, objetoLocalAutorizador, objetoLocalRrhh, nombreReferenciaFinanzasRemota, nombreReferenciaAutorizadorRemoto, nombreReferenciaRrhhRemoto,  puerto);
         if (resultadoConexion) {
             logger.log(Level.INFO, "Se ha establecido la conexion correctamente");
         } else {
@@ -53,7 +61,7 @@ public class Servidor {
 
         //En caso que presione una tecla el administrador, se detiene el servicio
         try {
-            servidor.detenerConexion(nombreReferenciaFinanzasRemota);
+            servidor.detenerConexion(nombreReferenciaFinanzasRemota, nombreReferenciaAutorizadorRemoto, nombreReferenciaRrhhRemoto);
             lector.close();
         } catch (RemoteException re) {
             //En caso de haber un error, es mostrado por un mensaje
