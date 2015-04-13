@@ -1,17 +1,17 @@
-package cl.usach.lab1.autorizador.conn;
+package cl.usach.lab1.rrhh.rmi.conn;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import cl.usach.lab1.autorizador.interfaces.AutorizadorInterface;
+import cl.usach.lab1.rrhh.rmi.interfaces.RrhhInterface;
 
-public class ConexionAutorizadorRMI {
+public class ConexionRrhhRMI {
     private Registry registry;  //Registro de la conexión del usuario con el servidor
     private boolean conectado;  //Estado de conexión del usuario con el servidor
-    private AutorizadorInterface servidor; //Interface necesaria para la comunición con el objecto del servidor
+    private RrhhInterface servidor; //Interface necesaria para la comunición con el objecto del servidor
 
-    public ConexionAutorizadorRMI() {
+    public ConexionRrhhRMI() {
         this.conectado = false;
         this.registry = null;
         this.servidor = null;
@@ -41,7 +41,7 @@ public class ConexionAutorizadorRMI {
 
             //Vamos al Registry y miramos el Objeto "nombreObjRemoto" para poder usarlo.
             System.out.println("lookup: "+nombreObjetoRemoto);
-            servidor = (AutorizadorInterface) registry.lookup(nombreObjetoRemoto);
+            servidor = (RrhhInterface) registry.lookup(nombreObjetoRemoto);
             System.out.println("ok");
             this.conectado = true;
             return true;
@@ -76,11 +76,11 @@ public class ConexionAutorizadorRMI {
         this.conectado = conectado;
     }
 
-    public AutorizadorInterface getServidor() {
+    public RrhhInterface getServidor() {
         return servidor;
     }
 
-    public void setServidor(AutorizadorInterface servidor) {
+    public void setServidor(RrhhInterface servidor) {
         this.servidor = servidor;
     }
 }

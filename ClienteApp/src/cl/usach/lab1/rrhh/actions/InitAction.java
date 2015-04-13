@@ -1,11 +1,11 @@
-package cl.usach.lab1.finanzas.actions;
+package cl.usach.lab1.rrhh.actions;
 
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class InitIntranetAction extends ActionSupport{
+public class InitAction extends ActionSupport{
 	private String email;
 	private String nombre;
 	private String apellido;
@@ -25,7 +25,21 @@ public class InitIntranetAction extends ActionSupport{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	
 }
