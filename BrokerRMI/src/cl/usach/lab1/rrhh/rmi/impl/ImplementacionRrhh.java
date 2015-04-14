@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,6 +37,12 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 		return trabajador;
+	}
+
+	@Override
+	public List<HashMap> listarCargos() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
