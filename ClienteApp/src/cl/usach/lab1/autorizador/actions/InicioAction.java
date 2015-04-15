@@ -1,9 +1,9 @@
 package cl.usach.lab1.autorizador.actions;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import cl.usach.lab1.rrhh.rmi.client.ClienteRrhhRMI;
+import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -15,14 +15,14 @@ public class InicioAction extends ActionSupport {
 
 	public String execute() throws Exception {
 		ClienteRrhhRMI autorizadorRMI = new ClienteRrhhRMI();
-		HashMap trabajador = autorizadorRMI.loginUsuario(email, password);
+		Trabajador trabajador = autorizadorRMI.loginUsuario(email, password);
 		if (trabajador!=null) {
 			// Inicio de sesion satisfactorio asignar valores
 			Map session = ActionContext.getContext().getSession();
 			session.put("logedIn", "true");
 			session.put("email", email);
-			session.put("nombre", trabajador.get("nombre"));
-			session.put("apellido", trabajador.get("apellido"));
+			session.put("nombre", trabajador.getNombre());
+			session.put("apellido", trabajador.getApellido());
 			return "RRHH";
 		}
 		return ERROR;

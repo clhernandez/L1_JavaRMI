@@ -3,9 +3,11 @@ package cl.usach.lab1.rrhh.rmi.client;
 
 import java.rmi.RemoteException;
 import java.util.HashMap;
+import java.util.List;
 
 import cl.usach.lab1.rrhh.rmi.conn.ConexionRrhhRMI;
 import cl.usach.lab1.rrhh.rmi.interfaces.RrhhInterface;
+import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
 
 public class ClienteRrhhRMI {
@@ -20,10 +22,18 @@ public class ClienteRrhhRMI {
     	conexion = new ConexionRrhhRMI();
 	}
     
-    public HashMap loginUsuario(String nomus, String passwd) throws RemoteException{
+    public Trabajador loginUsuario(String nomus, String passwd) throws RemoteException{
     	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
     		objetoRemoto = conexion.getServidor();
     		return objetoRemoto.getTrabajador(nomus, passwd);
+    	}
+    	return null;
+    }
+    
+    public List<Trabajador> listarTrabajadores() throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.listarTrabajadores();
     	}
     	return null;
     }

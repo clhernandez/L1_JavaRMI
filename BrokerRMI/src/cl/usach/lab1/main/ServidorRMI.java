@@ -8,7 +8,6 @@ import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import cl.usach.lab1.autorizador.interfaces.AutorizadorInterface;
 import cl.usach.lab1.finanzas.rmi.interfaces.FinanzasInterface;
 import cl.usach.lab1.rrhh.rmi.interfaces.RrhhInterface;
 
@@ -48,7 +47,7 @@ public class ServidorRMI {
 
     //Ingresa el objeto referenciado al registro del servidor, de tal manera
     //que pueda ser utilizado posteriormente de forma remota
-    public boolean iniciarConexion(FinanzasInterface objetoFinanzas, AutorizadorInterface objetoAutorizador, RrhhInterface objetoRrhh, String nombreFinanzas, String nombreAutorizador, String nombreRrhh, int Puerto) {
+    public boolean iniciarConexion(FinanzasInterface objetoFinanzas, RrhhInterface objetoRrhh, String nombreFinanzas, String nombreRrhh, int Puerto) {
 
         try {
             this.registro = getRegistro(Puerto);
@@ -58,7 +57,6 @@ public class ServidorRMI {
             //con el nombre de referencia del objeto y el objeto inicializado
             //que entró por parámetro
             registro.rebind(nombreFinanzas, objetoFinanzas);
-            registro.rebind(nombreAutorizador, objetoAutorizador);
             registro.rebind(nombreRrhh, objetoRrhh);
         } catch (RemoteException re) {
             //En caso de haber un error, es mostrado por un mensaje
@@ -69,12 +67,11 @@ public class ServidorRMI {
     }
 
     //Quita del registro del servidor la referencia al objeto remoto
-    public void detenerConexion(String nombreFinanzas, String nombreAutorizador, String nombreRrhh) throws RemoteException {
+    public void detenerConexion(String nombreFinanzas, String nombreRrhh) throws RemoteException {
         try {
             //Se saca de RMI Registry el objeto "Ejemplo-RMI"
             //El cual ya no estará disponible para ser llamado remotamente
             registro.unbind(nombreFinanzas);
-            registro.unbind(nombreAutorizador);
             registro.unbind(nombreRrhh);
             conectado = false;
         } catch (NotBoundException | AccessException ex) {

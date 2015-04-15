@@ -9,11 +9,11 @@
 		<action name="login" class="cl.usach.lab1.autorizador.actions.InicioAction"
 			method="execute">
 			<result type="redirectAction" name="FINANZAS">
-				<param name="actionName">finanzadash</param>
+				<param name="actionName">dashboard</param>
 				<param name="namespace">/finanzas</param>
 			</result>
 			<result type="redirectAction" name="RRHH">
-				<param name="actionName">rrhhdash</param>
+				<param name="actionName">dashboard</param>
 				<param name="namespace">/rrhh</param>
 			</result>
 			<!-- <result name="success">/web/index.jsp</result> -->
@@ -26,13 +26,16 @@
 	</package>
 	
 	<package name="finanzas" extends="struts-default" namespace="/finanzas">
-		<action name="finanzadash" class="cl.usach.lab1.finanzas.actions.InitIntranetAction">
+		<action name="dashboard" class="cl.usach.lab1.finanzas.actions.InitIntranetAction">
 			<result name="success">/finanzas/index.jsp</result>
 		</action>
 	</package>
 	<package name="rrhh" extends="struts-default" namespace="/rrhh">
-		<action name="rrhhdash" class="cl.usach.lab1.rrhh.actions.InitAction">
+		<action name="dashboard" class="cl.usach.lab1.rrhh.actions.InitAction">
 			<result name="success">/rrhh/index.jsp</result>
+		</action>
+		<action name="listarTrabajadores" class="cl.usach.lab1.rrhh.actions.ListarTrabajadoresAction">
+			<result name="success">/rrhh/listarTrabajadores.jsp</result>
 		</action>
 	</package>
 	
