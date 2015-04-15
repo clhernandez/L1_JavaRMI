@@ -1,4 +1,4 @@
-package cl.usach.lab1.rrhh.vo;
+package cl.usach.lab1.rrhh.rmi.vo;
 
 import java.io.Serializable;
 
@@ -15,8 +15,9 @@ public class Trabajador implements Serializable{
 	private int sueldo;
 	private int comision_porc;
 	private int id_departamento_fk;
-	private int id_region_fk;
+
 	private String travajadorescol;
+	
 	public int getId_trabajador() {
 		return id_trabajador;
 	}
@@ -76,12 +77,6 @@ public class Trabajador implements Serializable{
 	}
 	public void setId_departamento_fk(int id_departamento_fk) {
 		this.id_departamento_fk = id_departamento_fk;
-	}
-	public int getId_region_fk() {
-		return id_region_fk;
-	}
-	public void setId_region_fk(int id_region_fk) {
-		this.id_region_fk = id_region_fk;
 	}
 	public String getTravajadorescol() {
 		return travajadorescol;
