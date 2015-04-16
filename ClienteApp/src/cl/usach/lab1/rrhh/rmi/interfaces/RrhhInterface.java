@@ -12,6 +12,10 @@ public interface RrhhInterface extends Remote {
 	public List<HashMap> listarCargos() throws RemoteException;
 	
 	//Metodos CRUD para Trabajadores.
-	public Trabajador getTrabajador(String usuario, String password) throws RemoteException;
+	public boolean ingresarTrabajador(Trabajador trabajador) throws RemoteException;
+	public boolean modificarTrabajador(Trabajador trabajador) throws RemoteException;
+	public boolean eliminarTrabajador(int id_trabajador) throws RemoteException;
+	public Trabajador loginTrabajador(String usuario, String password) throws RemoteException;
+	public Trabajador getTrabajadorByRut(String rut) throws RemoteException;
 	public List<Trabajador> listarTrabajadores() throws RemoteException;
 }
