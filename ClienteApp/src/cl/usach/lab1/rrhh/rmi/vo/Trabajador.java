@@ -6,23 +6,28 @@ public class Trabajador implements Serializable{
 	
 	private static final long serialVersionUID = 7162625965979518700L;
 	private int id_trabajador;
+	private String rut;
 	private String nombre;
 	private String apellido;
+	private String passwd;
 	private String email;
 	private String telefono;
 	private String fecha_contratacion;
 	private int id_cargo_fk;
 	private int sueldo;
-	private int comision_porc;
 	private int id_departamento_fk;
-
-	private String travajadorescol;
 	
 	public int getId_trabajador() {
 		return id_trabajador;
 	}
 	public void setId_trabajador(int id_trabajador) {
 		this.id_trabajador = id_trabajador;
+	}
+	public String getRut() {
+		return rut;
+	}
+	public void setRut(String rut) {
+		this.rut = rut;
 	}
 	public String getNombre() {
 		return nombre;
@@ -35,6 +40,12 @@ public class Trabajador implements Serializable{
 	}
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 	public String getEmail() {
 		return email;
@@ -66,23 +77,11 @@ public class Trabajador implements Serializable{
 	public void setSueldo(int sueldo) {
 		this.sueldo = sueldo;
 	}
-	public int getComision_porc() {
-		return comision_porc;
-	}
-	public void setComision_porc(int comision_porc) {
-		this.comision_porc = comision_porc;
-	}
 	public int getId_departamento_fk() {
 		return id_departamento_fk;
 	}
 	public void setId_departamento_fk(int id_departamento_fk) {
 		this.id_departamento_fk = id_departamento_fk;
-	}
-	public String getTravajadorescol() {
-		return travajadorescol;
-	}
-	public void setTravajadorescol(String travajadorescol) {
-		this.travajadorescol = travajadorescol;
 	}
 	
 }
