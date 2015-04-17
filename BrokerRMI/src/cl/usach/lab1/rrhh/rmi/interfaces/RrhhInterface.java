@@ -20,6 +20,7 @@ public interface RrhhInterface extends Remote {
 	public Trabajador getTrabajadorByRut(String rut) throws RemoteException;
 	public List<Trabajador> listarTrabajadores() throws RemoteException;
 
+	//Metodos CRUD para Departamentos
 	public boolean ingresarDepartamento(Departamento departamento) throws RemoteException;
 	public boolean modificarDepartamento(Departamento departamento) throws RemoteException;
 	public boolean eliminarDepartamento(int id_departamento) throws RemoteException;

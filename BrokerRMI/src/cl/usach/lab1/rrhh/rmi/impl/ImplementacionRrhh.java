@@ -97,7 +97,7 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 	@Override
 	public Trabajador loginTrabajador(String usuario, String password) throws RemoteException {
 		logger.log(Level.INFO, "Login usuario...");
-		TrabajadorDAO objRRHH = new DepartamentoDAO();
+		TrabajadorDAO objRRHH = new TrabajadorDAO();
 		Trabajador trabajador = null;
 		try {
 			trabajador = objRRHH.validarTrabajador(usuario, password);
