@@ -10,6 +10,7 @@ import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 public interface RrhhInterface extends Remote {
 	
 	public List<HashMap> listarCargos() throws RemoteException;
+
 	
 	//Metodos CRUD para Trabajadores.
 	public boolean ingresarTrabajador(Trabajador trabajador) throws RemoteException;
@@ -18,4 +19,9 @@ public interface RrhhInterface extends Remote {
 	public Trabajador loginTrabajador(String usuario, String password) throws RemoteException;
 	public Trabajador getTrabajadorByRut(String rut) throws RemoteException;
 	public List<Trabajador> listarTrabajadores() throws RemoteException;
+
+	public boolean ingresarDepartamento(Departamento departamento) throws RemoteException;
+	public boolean modificarDepartamento(Departamento departamento) throws RemoteException;
+	public boolean eliminarDepartamento(int id_departamento) throws RemoteException;
+	public List<Departamento> listarDepartamentos() throws RemoteException;
 }
