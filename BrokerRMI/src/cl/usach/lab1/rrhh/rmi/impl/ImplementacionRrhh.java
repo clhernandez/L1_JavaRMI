@@ -26,13 +26,65 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public Trabajador getTrabajador(String usuario, String password) throws RemoteException {
-		//TODO implementar la conexion a BD y validar al usuario
-		logger.log(Level.INFO, "Login usuario...");
+	public List<HashMap> listarCargos() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	//CRUD Trabajadores
+	@Override
+	public boolean ingresarTrabajador(Trabajador trabajador)
+			throws RemoteException {
+		logger.log(Level.INFO, "Ingresar Trabajador...");
+		TrabajadorDAO objRRHH = new TrabajadorDAO();
+		boolean resultado = false;
+		try {
+			 resultado = objRRHH.ingresarTrabajador(trabajador);
+			logger.log(Level.INFO, "resultado ingresarTrabajador: " + resultado);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+
+	@Override
+	public boolean modificarTrabajador(Trabajador trabajador)
+			throws RemoteException {
+		logger.log(Level.INFO, "Modificar Trabajador...");
+		TrabajadorDAO objRRHH = new TrabajadorDAO();
+		boolean resultado = false;
+		try {
+			 resultado = objRRHH.modificarTrabajador(trabajador);
+			logger.log(Level.INFO, "resultado modificarTrabajador: " + resultado);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+
+	@Override
+	public boolean eliminarTrabajador(int id_trabajador) throws RemoteException {
+		logger.log(Level.INFO, "Eliminar Trabajador...");
+		TrabajadorDAO objRRHH = new TrabajadorDAO();
+		boolean resultado = false;
+		try {
+			 resultado = objRRHH.eliminarTrabajador(id_trabajador);
+			logger.log(Level.INFO, "resultado EliminarTrabajador: " + resultado);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+	@Override
+	public Trabajador getTrabajadorByRut(String rut) throws RemoteException {
+		logger.log(Level.INFO, "Get Trabajador...");
 		TrabajadorDAO objRRHH = new TrabajadorDAO();
 		Trabajador trabajador = null;
 		try {
-			trabajador = objRRHH.getTrabajador(usuario, password);
+			trabajador = objRRHH.getTrabajadorByRut(rut);
 			logger.log(Level.INFO, "resultado getTrabajador: " + trabajador);
 		} catch (ClassNotFoundException | SQLException e) {
 			logger.log(Level.WARNING, e.getMessage());
@@ -40,13 +92,20 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 		}
 		return trabajador;
 	}
-
 	@Override
-	public List<HashMap> listarCargos() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public Trabajador loginTrabajador(String usuario, String password) throws RemoteException {
+		logger.log(Level.INFO, "Login usuario...");
+		TrabajadorDAO objRRHH = new TrabajadorDAO();
+		Trabajador trabajador = null;
+		try {
+			trabajador = objRRHH.validarTrabajador(usuario, password);
+			logger.log(Level.INFO, "resultado loginTrabajador: " + trabajador);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return trabajador;
 	}
-
 	@Override
 	public List<Trabajador> listarTrabajadores() throws RemoteException {
 		logger.log(Level.INFO, "Obteniendo Listado Trabajadores...");
@@ -61,5 +120,6 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 		}
 		return trabajadores;
 	}
+	//FIN CRUD Trabajadores
 
 }
