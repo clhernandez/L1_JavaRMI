@@ -6,6 +6,7 @@ import java.util.List;
 
 import cl.usach.lab1.rrhh.rmi.conn.ConexionRrhhRMI;
 import cl.usach.lab1.rrhh.rmi.interfaces.RrhhInterface;
+import cl.usach.lab1.rrhh.rmi.vo.Cargo;
 import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
 
@@ -21,6 +22,8 @@ public class ClienteRrhhRMI {
     	conexion = new ConexionRrhhRMI();
 	}
     
+    
+    //TRABAJADORES
     public Trabajador loginUsuario(String nomus, String passwd) throws RemoteException{
     	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
     		objetoRemoto = conexion.getServidor();
@@ -68,5 +71,41 @@ public class ClienteRrhhRMI {
     	}
     	return null;
     }
-      
+    
+    
+    //CARGOS   
+    public List<Cargo> listarCargos() throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.listarCargos();
+    	}
+    	return null;
+    }
+    
+    public boolean ingresarCargo(Cargo crg) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.ingresarCargo(crg);
+    	}
+    	return false;
+    }
+    
+    public boolean modificarCargo(Cargo crg) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.modificarCargo(crg);
+    	}
+    	return false;
+    }
+    
+    public boolean eliminarCargo(int id_cargo) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.eliminarCargo(id_cargo);
+    	}
+    	return false;
+    }
+
+    
+     
 }
