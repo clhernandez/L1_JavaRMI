@@ -11,12 +11,12 @@
 				<div class="table-responsive">
 					<h1 class="page-header">Ingresar Producto</h1>
 				
-					<form class="form-signin" action="ingresarProducto">
+					<form class="form-signin" action="ingresarProducto" method="post">
 						<label for="input_nombre" class="sr-only">Nombre Producto</label>
 						<input name="nombre" type="text" id="input_nombre" class="form-control" placeholder="Nombre Producto" required autofocus="">
 						
 						<label for="input_precio" class="sr-only">Precio Producto</label>
-						<input name="precio" type="text" id="input_precio" class="form-control" placeholder="Precio Producto"  required autofocus="">
+						<input name="precio" type="number" id="input_precio" class="form-control" placeholder="Precio Producto"  required autofocus="">
 						
 						<label for="input_descripcion" class="sr-only">Descripcion Producto</label>
 						<input name="descripcion" type="text" id="input_descripcion" class="form-control" placeholder="Descripcion Producto"  autofocus="">

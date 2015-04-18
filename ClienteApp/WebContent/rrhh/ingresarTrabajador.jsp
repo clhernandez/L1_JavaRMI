@@ -11,7 +11,7 @@
 				<div class="table-responsive">
 					<h1 class="page-header">Ingresar Trabajador</h1>
 				
-					<form class="form-signin" action="ingresarTrabajador">
+					<form class="form-signin" action="ingresarTrabajador" method="post">
 						<label for="input_rut" class="sr-only">rut</label>
 						<input name="rut" type="text" id="input_rut" class="form-control" placeholder="rut" required autofocus="">
 						<label for="input_nombre" class="sr-only">nombre</label>

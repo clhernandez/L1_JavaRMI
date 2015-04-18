@@ -36,6 +36,9 @@ public class ModificarTrabajadorJsonAction extends ActionSupport {
 			trb.setRut(rut);
 			trb.setNombre(nombre);
 			trb.setApellido(apellido);
+			if(password!=null && password.equals("")==false){
+				trb.setPasswd(password);
+			}
 			trb.setEmail(email);
 			trb.setTelefono(telefono);
 			trb.setFecha_contratacion(fecha_contratacion);
@@ -52,7 +55,7 @@ public class ModificarTrabajadorJsonAction extends ActionSupport {
 
 			
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
+			msj="Ocurrio un error: "+e.getMessage();
 			e.printStackTrace();
 		}
 
@@ -137,6 +140,10 @@ public class ModificarTrabajadorJsonAction extends ActionSupport {
 
 	public void setId_departamento_fk(int id_departamento_fk) {
 		this.id_departamento_fk = id_departamento_fk;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 	public void setPassword(String password) {

@@ -52,7 +52,7 @@
 				<input name="nombre" type="text" id="input_nombre" class="form-control" placeholder="Nombre Producto" required autofocus="">
 				
 				<label for="input_precio" class="sr-only">Precio Producto</label>
-				<input name="precio" type="text" id="input_precio" class="form-control" placeholder="Precio Producto"  required autofocus="">
+				<input name="precio" type="number" id="input_precio" class="form-control" placeholder="Precio Producto"  required autofocus="">
 				
 				<label for="input_descripcion" class="sr-only">Descripcion Producto</label>
 				<input name="descripcion" type="text" id="input_descripcion" class="form-control" placeholder="Descripcion Producto"  autofocus="">
@@ -87,12 +87,17 @@
 				
 			});
 			$("#guardar_producto").click(function(){
-				$.post("modificarProducto", $("#form_mod_producto").serialize(), function(json){
-					$("#msjws").empty();
-					$("#msjws").text(json.msj);
-					$("#msjws").removeClass("hide");
-					reload=true;
-				});
+				if($('#form_mod_producto')[0].checkValidity()){
+					$.post("modificarProducto", $("#form_mod_producto").serialize(), function(json){
+						$("#msjws").empty();
+						$("#msjws").text(json.msj);
+						$("#msjws").removeClass("hide");
+						reload=true;
+					});	
+				}else{
+					var $myForm = $("#form_mod_producto");
+					$('<input type="submit">').hide().appendTo($myForm).click().remove();
+				}
 			});
 			
 			$(".eliminar_producto").click(function(){
