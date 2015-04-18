@@ -6,22 +6,15 @@
 	<constant name="struts.devMode" value="true" />
 	
 	<package name="login" extends="struts-default">
-		<action name="login" class="cl.usach.lab1.autorizador.actions.InicioAction"
-			method="execute">
-			<result type="redirectAction" name="FINANZAS">
-				<param name="actionName">dashboard</param>
-				<param name="namespace">/finanzas</param>
-			</result>
-			<result type="redirectAction" name="RRHH">
-				<param name="actionName">dashboard</param>
-				<param name="namespace">/rrhh</param>
-			</result>
+		<action name="login" class="cl.usach.lab1.autorizador.actions.InicioAction" method="execute">
+			<result type="redirect" name="FINANZAS">/finanzas/dashboard.action</result>
+			<result type="redirect" name="RRHH">/rrhh/dashboard.action</result>
 			<!-- <result name="success">/web/index.jsp</result> -->
 			<result name="error">/login.jsp</result>
 		</action>
 		
 		<action name="logout" class="cl.usach.lab1.autorizador.actions.InicioAction" method="logout">
-			<result name="SUCCESS">/login.jsp</result>
+			<result>/login.jsp</result>
 		</action>
 	</package>
 	
