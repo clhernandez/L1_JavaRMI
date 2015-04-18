@@ -163,7 +163,7 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 			DepartamentoDAO objRRHH = new DepartamentoDAO();
 			boolean resultado = false;
 			try {
-				 resultado = objRRHH.eliminarDepartamento(id_departamento);
+				 resultado = objRRHH.eliminarDepartamento(id_departmento);
 				logger.log(Level.INFO, "resultado EliminarDepartamento: " + resultado);
 			} catch (ClassNotFoundException | SQLException e) {
 				logger.log(Level.WARNING, e.getMessage());
@@ -173,7 +173,7 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 		}
 		public List<Departamento> listarDepartamentos() throws RemoteException {
 			logger.log(Level.INFO, "Obteniendo Listado Departamento...");
-			DepartamentoDAO dao = new Departamento();
+			DepartamentoDAO dao = new DepartamentoDAO();
 			List<Departamento> departamentos = new ArrayList();
 			try {
 				departamentos = dao.listarDepartamentos();
@@ -182,7 +182,7 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 				logger.log(Level.WARNING, e.getMessage());			
 				e.printStackTrace();
 			}
-			return departamento;
+			return departamentos;
 		}
 		//FIN CRUD Departamentos
 	

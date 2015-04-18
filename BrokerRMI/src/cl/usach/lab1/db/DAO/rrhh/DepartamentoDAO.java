@@ -47,7 +47,7 @@ public class DepartamentoDAO {
 		PreparedStatement pst = RrhhConf.getConeccion().prepareStatement(Configuraciones.getConfig("RRHH.getAllDepartamentos"));
 		List<Departamento> departamentos = new ArrayList();
 		ResultSet rs = pst.executeQuery();
-		Departamentos dep = null;
+		Departamento dep = null;
 		while(rs.next()){
 			dep = new Departamento();
 			dep.setId_departamento(rs.getInt("id_departamento"));

@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.List;
 
+import cl.usach.lab1.rrhh.rmi.vo.Departamento;
 import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
 public interface RrhhInterface extends Remote {
