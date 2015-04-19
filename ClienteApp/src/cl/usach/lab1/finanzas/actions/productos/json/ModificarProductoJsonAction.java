@@ -1,17 +1,12 @@
 package cl.usach.lab1.finanzas.actions.productos.json;
 
 import java.rmi.RemoteException;
-
 import cl.usach.lab1.finanzas.rmi.client.ClienteFinanzasRMI;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ModificarProductoJsonAction extends ActionSupport {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1559424061358753605L;
 	private int id_producto;
 	private String nombre;
@@ -29,6 +24,7 @@ public class ModificarProductoJsonAction extends ActionSupport {
 			prd.setNombre(nombre);
 			prd.setDescripcion(descripcion);
 			prd.setPrecio(precio);
+			
 			if(cliente.modificarProducto(prd)){
 				msj= "Producto modificado exitosamente.";
 			}else{

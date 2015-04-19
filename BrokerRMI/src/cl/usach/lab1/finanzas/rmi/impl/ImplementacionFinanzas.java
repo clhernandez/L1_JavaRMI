@@ -3,15 +3,22 @@ package cl.usach.lab1.finanzas.rmi.impl;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
 import cl.usach.lab1.db.DAO.finanzas.OrdenProductoDAO;
+import cl.usach.lab1.db.DAO.finanzas.ClienteDAO;
 import cl.usach.lab1.db.DAO.finanzas.ProductoDAO;
 import cl.usach.lab1.finanzas.rmi.interfaces.FinanzasInterface;
-import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
+import cl.usach.lab1.finanzas.rmi.vo.Cliente;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
+
 
 public class ImplementacionFinanzas extends UnicastRemoteObject implements
 		FinanzasInterface {
@@ -24,6 +31,81 @@ public class ImplementacionFinanzas extends UnicastRemoteObject implements
 		logger = Logger.getLogger(getClass().getName());
         logger.log(Level.INFO, "Se ha instanciado la clase de ImplementacionFinanzas");
 	}
+	
+	//CRUD Clientes
+	@Override
+	public boolean ingresarCliente(Cliente cliente) throws RemoteException {
+		logger.log(Level.INFO, "Ingresar Cliente...");
+		ClienteDAO objFINANZAS = new ClienteDAO();
+		boolean resultado = false;
+		try {
+			 resultado = objFINANZAS.ingresarCliente(cliente);
+			logger.log(Level.INFO, "resultado ingresarCliente: " + resultado);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+
+	@Override
+	public boolean modificarCliente(Cliente cliente) throws RemoteException {
+		logger.log(Level.INFO, "Modificar Cliente...");
+		ClienteDAO objFINANZAS = new ClienteDAO();
+		boolean resultado = false;
+		try {
+			 resultado = objFINANZAS.modificarCliente(cliente);
+			logger.log(Level.INFO, "resultado modificarCliente: " + resultado);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+
+	@Override
+	public boolean eliminarCliente(int id_cliente) throws RemoteException {
+		logger.log(Level.INFO, "Eliminar Cliente...");
+		ClienteDAO objFINANZAS = new ClienteDAO();
+		boolean resultado = false;
+		try {
+			 resultado = objFINANZAS.eliminarCliente(id_cliente);
+			logger.log(Level.INFO, "resultado EliminarCliente: " + resultado);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+	@Override
+	public Cliente getClienteById(int id_cliente) throws RemoteException {
+		logger.log(Level.INFO, "Get Cliente...");
+		ClienteDAO objFINANZAS = new ClienteDAO();
+		Cliente cliente = null;
+		try {
+			cliente = objFINANZAS.getClienteById(id_cliente);
+			logger.log(Level.INFO, "resultado getCliente: " + cliente);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return cliente;
+	}
+	@Override
+	public List<Cliente> listarClientes() throws RemoteException {
+		logger.log(Level.INFO, "Obteniendo Listado Cliente...");
+		ClienteDAO dao = new ClienteDAO();
+		List<Cliente> clientes = new ArrayList();
+		try {
+			clientes = dao.listarClientes();
+			logger.log(Level.INFO, "Cantidad de clientes obtenidos: " + clientes.size());
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());			
+			e.printStackTrace();
+		}
+		return clientes;
+	}
+	//FIN CRUD Clientes
 	
 	//CRUD PRODUCTOS
 	@Override
@@ -101,85 +183,86 @@ public class ImplementacionFinanzas extends UnicastRemoteObject implements
 		return productos;
 	}
 	//FIN CRUD PRODUCTOS
-
+	
 	//CRUD ORDEN_PRODUCTOS
-	@Override
-	public boolean ingresarOrdenProducto(OrdenProducto ordenProducto)
-			throws RemoteException {
-		logger.log(Level.INFO, "Ingresar OrdenProducto...");
-		OrdenProductoDAO objOPrd = new OrdenProductoDAO();
-		boolean resultado = false;
-		try {
-			 resultado = objOPrd.ingresarOrdenProducto(ordenProducto);
-			logger.log(Level.INFO, "resultado ingresarOrdenProducto: " + resultado);
-		} catch (ClassNotFoundException | SQLException e) {
-			logger.log(Level.WARNING, e.getMessage());
-			e.printStackTrace();
+		@Override
+		public boolean ingresarOrdenProducto(OrdenProducto ordenProducto)
+				throws RemoteException {
+			logger.log(Level.INFO, "Ingresar OrdenProducto...");
+			OrdenProductoDAO objOPrd = new OrdenProductoDAO();
+			boolean resultado = false;
+			try {
+				 resultado = objOPrd.ingresarOrdenProducto(ordenProducto);
+				logger.log(Level.INFO, "resultado ingresarOrdenProducto: " + resultado);
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return resultado;
 		}
-		return resultado;
-	}
 
-	@Override
-	public boolean modificarOrdenProducto(OrdenProducto ondenProducto)
-			throws RemoteException {
-		logger.log(Level.INFO, "modificar OrdenProducto...");
-		OrdenProductoDAO objOPrd = new OrdenProductoDAO();
-		boolean resultado = false;
-		try {
-			 resultado = objOPrd.modificarOrdenProducto(ondenProducto);
-			logger.log(Level.INFO, "resultado modificarOrdenProducto: " + resultado);
-		} catch (ClassNotFoundException | SQLException e) {
-			logger.log(Level.WARNING, e.getMessage());
-			e.printStackTrace();
+		@Override
+		public boolean modificarOrdenProducto(OrdenProducto ondenProducto)
+				throws RemoteException {
+			logger.log(Level.INFO, "modificar OrdenProducto...");
+			OrdenProductoDAO objOPrd = new OrdenProductoDAO();
+			boolean resultado = false;
+			try {
+				 resultado = objOPrd.modificarOrdenProducto(ondenProducto);
+				logger.log(Level.INFO, "resultado modificarOrdenProducto: " + resultado);
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return resultado;
 		}
-		return resultado;
-	}
 
-	@Override
-	public boolean eliminarOrdenProducto(int id_orden_producto)
-			throws RemoteException {
-		logger.log(Level.INFO, "eliminar OrdenProducto...");
-		OrdenProductoDAO objOPrd = new OrdenProductoDAO();
-		boolean resultado = false;
-		try {
-			 resultado = objOPrd.eliminarOrdenProducto(id_orden_producto);
-			logger.log(Level.INFO, "resultado eliminarOrdenProducto: " + resultado);
-		} catch (ClassNotFoundException | SQLException e) {
-			logger.log(Level.WARNING, e.getMessage());
-			e.printStackTrace();
+		@Override
+		public boolean eliminarOrdenProducto(int id_orden_producto)
+				throws RemoteException {
+			logger.log(Level.INFO, "eliminar OrdenProducto...");
+			OrdenProductoDAO objOPrd = new OrdenProductoDAO();
+			boolean resultado = false;
+			try {
+				 resultado = objOPrd.eliminarOrdenProducto(id_orden_producto);
+				logger.log(Level.INFO, "resultado eliminarOrdenProducto: " + resultado);
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return resultado;
 		}
-		return resultado;
-	}
 
-	@Override
-	public OrdenProducto getOrdenProductoById(int id_orden_producto)
-			throws RemoteException {
-		logger.log(Level.INFO, "obtener OrdenProducto...");
-		OrdenProductoDAO objOPrd = new OrdenProductoDAO();
-		OrdenProducto ordenProducto = null;
-		try {
-			ordenProducto = objOPrd.getOrdenProductoById(id_orden_producto);
-			logger.log(Level.INFO, "resultado getOrdenProductoById: " + ordenProducto);
-		} catch (ClassNotFoundException | SQLException e) {
-			logger.log(Level.WARNING, e.getMessage());
-			e.printStackTrace();
+		@Override
+		public OrdenProducto getOrdenProductoById(int id_orden_producto)
+				throws RemoteException {
+			logger.log(Level.INFO, "obtener OrdenProducto...");
+			OrdenProductoDAO objOPrd = new OrdenProductoDAO();
+			OrdenProducto ordenProducto = null;
+			try {
+				ordenProducto = objOPrd.getOrdenProductoById(id_orden_producto);
+				logger.log(Level.INFO, "resultado getOrdenProductoById: " + ordenProducto);
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return ordenProducto;
 		}
-		return ordenProducto;
-	}
 
-	@Override
-	public List<OrdenProducto> listarOrdenProductos() throws RemoteException {
-		logger.log(Level.INFO, "Listar Orden Productos...");
-		OrdenProductoDAO objOPrd = new OrdenProductoDAO ();
-		List<OrdenProducto> ordenProductos = null;
-		try {
-			ordenProductos = objOPrd.listarOrdenProductos();
-			logger.log(Level.INFO, "resultado listarOrdenProductos: " + ordenProductos.size());
-		} catch (ClassNotFoundException | SQLException e) {
-			logger.log(Level.WARNING, e.getMessage());
-			e.printStackTrace();
+		@Override
+		public List<OrdenProducto> listarOrdenProductos() throws RemoteException {
+			logger.log(Level.INFO, "Listar Orden Productos...");
+			OrdenProductoDAO objOPrd = new OrdenProductoDAO ();
+			List<OrdenProducto> ordenProductos = null;
+			try {
+				ordenProductos = objOPrd.listarOrdenProductos();
+				logger.log(Level.INFO, "resultado listarOrdenProductos: " + ordenProductos.size());
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return ordenProductos;
 		}
-		return ordenProductos;
-	}
-	//FIN CRUD ORDEN_PRODUCTOS
+		//FIN CRUD ORDEN_PRODUCTOS
+	
 }

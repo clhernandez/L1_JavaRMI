@@ -12,6 +12,7 @@
 			<!-- <result name="success">/web/index.jsp</result> -->
 			<result name="error">/login.jsp</result>
 		</action>
+
 		
 		<action name="logout" class="cl.usach.lab1.autorizador.actions.InicioAction" method="logout">
 			<result>/login.jsp</result>
@@ -29,7 +30,13 @@
 		<action name="listarProductos" class="cl.usach.lab1.finanzas.actions.productos.ListarProductosAction">
 			<result name="success">/finanzas/listarProductos.jsp</result>
 		</action>
-		
+	
+		<action name="listarClientes" class="cl.usach.lab1.finanzas.actions.ListarClientesAction">
+			<result name="success">/finanzas/listarClientes.jsp</result>
+		</action>
+		<action name="ingresarCliente" class="cl.usach.lab1.finanzas.actions.IngresarClienteAction">		
+	    	<result name="success">/finanzas/ingresarCliente.jsp</result>
+		</action>
 		<action name="ingresarOrdenProducto" class="cl.usach.lab1.finanzas.actions.ordenProductos.IngresarOrdenProductoAction">
 			<result name="success">/finanzas/ingresarOrdenProducto.jsp</result>
 		</action>
@@ -45,9 +52,15 @@
 		<action name="listarTrabajadores" class="cl.usach.lab1.rrhh.actions.ListarTrabajadoresAction">
 			<result name="success">/rrhh/listarTrabajadores.jsp</result>
 		</action>
-		<action name="ingresarTrabajador" class="cl.usach.lab1.rrhh.actions.IngresarTrabajadorAction">
-			
-			<result name="success">/rrhh/ingresarTrabajador.jsp</result>
+		<action name="ingresarTrabajador" class="cl.usach.lab1.rrhh.actions.IngresarTrabajadorAction">		
+	    <result name="success">/rrhh/ingresarTrabajador.jsp</result>
+		</action>
+		
+		<action name="listarCargos" class="cl.usach.lab1.rrhh.actions.ListarCargosAction">
+			<result name="success">/rrhh/listarCargos.jsp</result>
+		</action>
+		<action name="ingresarCargo" class="cl.usach.lab1.rrhh.actions.IngresarCargoAction">		
+	    	<result name="success">/rrhh/ingresarCargo.jsp</result>
 		</action>
 		<action name="listarDepartamentos" class="cl.usach.lab1.rrhh.actions.ListarDepartamentosAction">
 			<result name="success">/rrhh/listarDepartamentos.jsp</result>
@@ -56,19 +69,40 @@
 			
 			<result name="success">/rrhh/ingresarDepartamento.jsp</result>
 		</action>
-	
 	</package>
+
 	<package name="json" extends="json-default">
+		
 		<action name="getTrabajadorByRut" class="cl.usach.lab1.rrhh.actions.json.trabajador.GetTrabajadorByRutJsonAction">
 			<result type="json"></result>
 		</action>
 		<action name="modificar_trabajador" class="cl.usach.lab1.rrhh.actions.json.trabajador.ModificarTrabajadorJsonAction">
 			<result type="json"></result>
-		</action>
+		</action>	
 		<action name="eliminarTrabajadorById" class="cl.usach.lab1.rrhh.actions.json.trabajador.EliminarTrabajadorJsonAction">
 			<result type="json"></result>
+		</action>	
+		
+		<action name="getCargoById" class="cl.usach.lab1.rrhh.actions.json.cargo.GetCargoByIdJsonAction">
+			<result type="json"></result>
 		</action>
-				
+		<action name="modificar_cargo" class="cl.usach.lab1.rrhh.actions.json.cargo.ModificarCargoJsonAction">
+			<result type="json"></result>
+		</action>	
+		<action name="eliminarCargoById" class="cl.usach.lab1.rrhh.actions.json.cargo.EliminarCargoJsonAction">
+			<result type="json"></result>
+		</action>	
+		
+		<action name="getClienteById" class="cl.usach.lab1.finanzas.actions.json.cliente.GetClienteByIdJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="modificarCliente" class="cl.usach.lab1.finanzas.actions.json.cliente.ModificarClienteJsonAction">
+			<result type="json"></result>
+		</action>	
+		<action name="eliminarClienteById" class="cl.usach.lab1.finanzas.actions.json.cliente.EliminarClienteJsonAction">
+			<result type="json"></result>
+		</action>	
+		
 		<action name="getProductoById" class="cl.usach.lab1.finanzas.actions.productos.json.GetProductoByIdJsonAction">
 			<result type="json"></result>
 		</action>
@@ -79,7 +113,7 @@
 			<result type="json"></result>
 		</action>
 		
-		<action name="getOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.GetOrdenProductoByIdJsonAction">
+<action name="getOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.GetOrdenProductoByIdJsonAction">
 			<result type="json"></result>
 		</action>
 		<action name="modificarOrdenProducto" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.ModificarOrdenProductoJsonAction">
@@ -98,7 +132,6 @@
 		<action name="eliminarDepartamentoById" class="cl.usach.lab1.rrhh.actions.json.departamento.EliminarDepartamentoJsonAction">
 			<result type="json"></result>
 		</action>
-		
 	</package>
 	
 </struts>

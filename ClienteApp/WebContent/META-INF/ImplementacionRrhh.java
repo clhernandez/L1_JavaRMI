@@ -11,9 +11,7 @@ import java.util.logging.Logger;
 
 import cl.usach.lab1.db.DAO.rrhh.CargoDAO;
 import cl.usach.lab1.db.DAO.rrhh.TrabajadorDAO;
-import cl.usach.lab1.db.DAO.rrhh.DepartamentoDAO;
 import cl.usach.lab1.rrhh.rmi.interfaces.RrhhInterface;
-import cl.usach.lab1.rrhh.rmi.vo.Departamento;
 import cl.usach.lab1.rrhh.rmi.vo.Cargo;
 import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
@@ -120,83 +118,6 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 		return trabajadores;
 	}
 	//FIN CRUD Trabajadores
-	
-	//CRUD Departamentos
-		@Override
-		public boolean ingresarDepartamento(Departamento departamento)
-				throws RemoteException {
-			logger.log(Level.INFO, "Ingresar Departamento...");
-			DepartamentoDAO objRRHH = new DepartamentoDAO();
-			boolean resultado = false;
-			try {
-				 resultado = objRRHH.ingresarDepartamento(departamento);
-				logger.log(Level.INFO, "resultado ingresarDepartamento: " + resultado);
-			} catch (ClassNotFoundException | SQLException e) {
-				logger.log(Level.WARNING, e.getMessage());
-				e.printStackTrace();
-			}
-			return resultado;
-		}
-
-		@Override
-		public boolean modificarDepartamento(Departamento departamento)
-				throws RemoteException {
-			logger.log(Level.INFO, "Modificar Departamento...");
-			DepartamentoDAO objRRHH = new DepartamentoDAO();
-			boolean resultado = false;
-			try {
-				 resultado = objRRHH.modificarDepartamento(departamento);
-				logger.log(Level.INFO, "resultado modificarDepartamento: " + resultado);
-			} catch (ClassNotFoundException | SQLException e) {
-				logger.log(Level.WARNING, e.getMessage());
-				e.printStackTrace();
-			}
-			return resultado;
-		}
-
-		@Override
-		public boolean eliminarDepartamento(int id_departmento) throws RemoteException {
-			logger.log(Level.INFO, "Eliminar Departamento...");
-			DepartamentoDAO objRRHH = new DepartamentoDAO();
-			boolean resultado = false;
-			try {
-				 resultado = objRRHH.eliminarDepartamento(id_departmento);
-				logger.log(Level.INFO, "resultado EliminarDepartamento: " + resultado);
-			} catch (ClassNotFoundException | SQLException e) {
-				logger.log(Level.WARNING, e.getMessage());
-				e.printStackTrace();
-			}
-			return resultado;
-		}
-		public List<Departamento> listarDepartamentos() throws RemoteException {
-			logger.log(Level.INFO, "Obteniendo Listado Departamento...");
-			DepartamentoDAO dao = new DepartamentoDAO();
-			List<Departamento> departamentos = new ArrayList();
-			try {
-				departamentos = dao.listarDepartamentos();
-				logger.log(Level.INFO, "Cantidad de departamentos obtenidos: " + departamentos.size());
-			} catch (ClassNotFoundException | SQLException e) {
-				logger.log(Level.WARNING, e.getMessage());			
-				e.printStackTrace();
-			}
-			return departamentos;
-		}
-		@Override
-		public Departamento getDepartamentoById(int id_departamento) throws RemoteException {
-			logger.log(Level.INFO, "Get Departamento...");
-			DepartamentoDAO objRRHH = new DepartamentoDAO();
-			Departamento departamento = null;
-			try {
-				departamento = objRRHH.getDepartamentoById(id_departamento);
-				logger.log(Level.INFO, "resultado getDepartamento: " + departamento);
-			} catch (ClassNotFoundException | SQLException e) {
-				logger.log(Level.WARNING, e.getMessage());
-				e.printStackTrace();
-			}
-			return departamento;
-		}
-		//FIN CRUD Departamentos
-	
 
 	
 	//CRUD Cargos
@@ -229,7 +150,6 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 		}
 		return resultado;
 	}
-	
 
 	@Override
 	public boolean eliminarCargo(int id_cargo) throws RemoteException {
@@ -246,7 +166,7 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 		return resultado;
 	}
 	@Override
-	public Cargo getCargoById(int id_cargo) throws RemoteException {
+	public Cargo getCargoById(Int id_cargo) throws RemoteException {
 		logger.log(Level.INFO, "Get Cargo...");
 		CargoDAO objRRHH = new CargoDAO();
 		Cargo cargo = null;
