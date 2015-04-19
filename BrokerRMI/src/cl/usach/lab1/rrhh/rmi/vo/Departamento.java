@@ -5,7 +5,14 @@ import java.io.Serializable;
 
 public class Departamento implements Serializable{
 	
-	//private static final long serialVersionUID = 7162625965979518700L;   ????????????
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2509802864598818760L;
+	/**
+	 * 
+	 */
 	private int id_departamento;
 	private String nombre_departamento;
 	private String administrador;
