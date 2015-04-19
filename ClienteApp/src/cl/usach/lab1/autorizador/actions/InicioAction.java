@@ -23,7 +23,7 @@ public class InicioAction extends ActionSupport {
 			session.put("email", email);
 			session.put("nombre", trabajador.getNombre());
 			session.put("apellido", trabajador.getApellido());
-			return "FINANZAS";
+			return "RRHH";
 		}
 		return ERROR;
 

@@ -48,12 +48,7 @@
 	    	<result name="success">/rrhh/ingresarCargo.jsp</result>
 		</action>
 
-		<action name="listarClientes" class="cl.usach.lab1.finanzas.actions.ListarClientesAction">
-			<result name="success">/finanzas/listarClientes.jsp</result>
-		</action>
-		<action name="ingresarCliente" class="cl.usach.lab1.finanzas.actions.IngresarClientesAction">		
-	    	<result name="success">/finanzas/ingresarCargo.jsp</result>
-		</action>
+
 		
 	</package>
 	<package name="json" extends="json-default">
@@ -76,15 +71,6 @@
 			<result type="json"></result>
 		</action>	
 		
-		<action name="getClienteById" class="cl.usach.lab1.finanzas.actions.json.cliente.GetClienteByIdJsonAction">
-			<result type="json"></result>
-		</action>
-		<action name="modificar_cliente" class="cl.usach.lab1.finanzas.actions.json.cliente.ModificarClienteJsonAction">
-			<result type="json"></result>
-		</action>	
-		<action name="eliminarClienteById" class="cl.usach.lab1.cliente.actions.json.cliente.EliminarClienteJsonAction">
-			<result type="json"></result>
-		</action>	
 		
 
 	</package>

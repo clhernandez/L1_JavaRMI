@@ -17,7 +17,7 @@ public class IngresarCargoAction extends ActionSupport{
 	private String msj;
 	
 	public String execute() throws Exception {
-
+		if(nombre_cargo!=null){
 			ClienteRrhhRMI clienteRRHH = new ClienteRrhhRMI();
 			Cargo crg = new Cargo();
 			crg.setNombre_cargo(nombre_cargo);
@@ -28,9 +28,10 @@ public class IngresarCargoAction extends ActionSupport{
 			}else{
 				msj = "El cargo no fue ingresado.";
 			}
+		}
 		return SUCCESS;
-	}
 
+	}
 	public String getNombre_cargo() {
 		return nombre_cargo;
 	}
