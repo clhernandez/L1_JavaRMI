@@ -8,6 +8,7 @@ import java.util.List;
 
 import cl.usach.lab1.db.conf.RrhhConf;
 import cl.usach.lab1.rrhh.rmi.vo.Departamento;
+import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 import cl.usach.lab1.utils.Configuraciones;
 
 public class DepartamentoDAO {
@@ -58,4 +59,19 @@ public class DepartamentoDAO {
 		}
 		return departamentos;
 	}
+	public Departamento getDepartamentoById(int id_departamento) throws ClassNotFoundException, SQLException{
+		PreparedStatement pst = RrhhConf.getConeccion().prepareStatement(Configuraciones.getConfig("RRHH.getDepartamentoById"));
+		pst.setInt(1, id_departamento);
+		ResultSet rs = pst.executeQuery();
+		Departamento dep = null;
+		while(rs.next()){
+			dep = new Departamento();
+			dep.setId_departamento(rs.getInt("id_departamento"));
+			dep.setNombre_departamento(rs.getString("nombre_departamento"));
+			dep.setAdministrador(rs.getString("administrador"));
+			dep.setUbicacion(rs.getString("ubicacion"));
+		}
+		return dep;
+	}
+	
 }

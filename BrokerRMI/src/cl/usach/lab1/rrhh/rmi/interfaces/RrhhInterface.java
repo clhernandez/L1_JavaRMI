@@ -26,4 +26,5 @@ public interface RrhhInterface extends Remote {
 	public boolean modificarDepartamento(Departamento departamento) throws RemoteException;
 	public boolean eliminarDepartamento(int id_departamento) throws RemoteException;
 	public List<Departamento> listarDepartamentos() throws RemoteException;
+	public Departamento getDepartamentoById(int id_departamento) throws RemoteException;
 }

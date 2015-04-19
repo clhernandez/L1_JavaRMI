@@ -184,6 +184,20 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 			}
 			return departamentos;
 		}
+		@Override
+		public Departamento getDepartamentoById(int id_departamento) throws RemoteException {
+			logger.log(Level.INFO, "Get Departamento...");
+			DepartamentoDAO objRRHH = new DepartamentoDAO();
+			Departamento departamento = null;
+			try {
+				departamento = objRRHH.getDepartamentoById(id_departamento);
+				logger.log(Level.INFO, "resultado getDepartamento: " + departamento);
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return departamento;
+		}
 		//FIN CRUD Departamentos
 	
 

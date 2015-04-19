@@ -49,6 +49,14 @@
 			
 			<result name="success">/rrhh/ingresarTrabajador.jsp</result>
 		</action>
+		<action name="listarDepartamentos" class="cl.usach.lab1.rrhh.actions.ListarDepartamentosAction">
+			<result name="success">/rrhh/listarDepartamentos.jsp</result>
+		</action>
+		<action name="ingresarDepartamento" class="cl.usach.lab1.rrhh.actions.IngresarDepartamentoAction">
+			
+			<result name="success">/rrhh/ingresarDepartamento.jsp</result>
+		</action>
+	
 	</package>
 	<package name="json" extends="json-default">
 		<action name="getTrabajadorByRut" class="cl.usach.lab1.rrhh.actions.json.trabajador.GetTrabajadorByRutJsonAction">
@@ -60,7 +68,7 @@
 		<action name="eliminarTrabajadorById" class="cl.usach.lab1.rrhh.actions.json.trabajador.EliminarTrabajadorJsonAction">
 			<result type="json"></result>
 		</action>
-		
+				
 		<action name="getProductoById" class="cl.usach.lab1.finanzas.actions.productos.json.GetProductoByIdJsonAction">
 			<result type="json"></result>
 		</action>
@@ -78,6 +86,16 @@
 			<result type="json"></result>
 		</action>
 		<action name="eliminarOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.EliminarOrdenProductoJsonAction">
+			<result type="json"></result>
+		</action>
+		
+				<action name="getDepartamentoById" class="cl.usach.lab1.rrhh.actions.json.departamento.GetDepartamentoByIdJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="modificar_departamento" class="cl.usach.lab1.rrhh.actions.json.departamento.ModificarDepartamentoJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="eliminarDepartamentoById" class="cl.usach.lab1.rrhh.actions.json.departamento.EliminarDepartamentoJsonAction">
 			<result type="json"></result>
 		</action>
 		
