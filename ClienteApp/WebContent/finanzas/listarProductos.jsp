@@ -105,7 +105,7 @@
 				console.log(entrada);
 				if(confirm("¿Esta seguro que desea eliminar este producto?")){
 					$.post("eliminarProductoById", {id_producto: entrada}, function(json){
-						reload=true;
+						location.reload();
 					});
 					
 				}
