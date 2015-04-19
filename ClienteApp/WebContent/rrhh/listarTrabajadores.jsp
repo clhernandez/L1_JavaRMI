@@ -59,7 +59,7 @@
 				<label for="input_apellido" class="sr-only">apellido</label>
 				<input name="apellido" type="text" id="input_apellido" class="form-control" placeholder="apellido"  required autofocus="">
 				<label for="input_email" class="sr-only">email</label>
-				<input name="email" type="text" id="input_email" class="form-control" placeholder="email"  autofocus="">
+				<input name="email" type="email" id="input_email" class="form-control" placeholder="email"  autofocus="">
 				<label for="input_password" class="sr-only">password</label>
 				<input name="password" type="password" id="input_password" class="form-control" placeholder="password"  autofocus="">
 				<label for="input_telefono" class="sr-only">telefono</label>
@@ -67,8 +67,9 @@
 				<label for="input_fecha_contratacion" class="sr-only">fecha_contratacion</label>
 				<input name="fecha_contratacion" type="text" id="input_fecha_contratacion" class="form-control" placeholder="fecha_contratacion"  autofocus="">
 				<label for="input_sueldo" class="sr-only">sueldo</label>
-				<input name="sueldo" type="numeric" id="input_sueldo" class="form-control" placeholder="sueldo"  autofocus="">
+				<input name="sueldo" type="number" id="input_sueldo" class="form-control" placeholder="sueldo"  autofocus="">
 		      </form>
+		      <span id='msjws' class='alert alert-info hide' ></span>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -81,11 +82,11 @@
 	<jsp:include page="base/footer.jsp" flush="true"></jsp:include>
 	<script>
 		$(document).ready(function(){
+			var reload = false;
 			$(".modificar_trabajador").click(function(){
 				var entrada = $(this).attr("attr-id");
 				console.log(entrada);
 				$.post("getTrabajadorByRut", {rut: entrada}, function(json){
-					console.log(json);
 					if(json!=null){
 						
 						$("#input_id_trabajador").val(json.id_trabajador);
@@ -104,29 +105,44 @@
 				
 			});
 			$("#guardar_trabajador").click(function(){
-				console.log( $("#form_mod_trabajador").serialize() );
-				$.post("modificar_trabajador", $("#form_mod_trabajador").serialize(), function(json){
-					console.log(json);
-				});
+				if($('#form_mod_trabajador')[0].checkValidity()){
+					$.post("modificar_trabajador", $("#form_mod_trabajador").serialize(), function(json){
+						$("#msjws").empty();
+						$("#msjws").text(json.msj);
+						$("#msjws").removeClass("hide");
+						reload=true;
+					});
+				}else{
+					var $myForm = $("#form_mod_trabajador");
+					$('<input type="submit">').hide().appendTo($myForm).click().remove();
+				}
+				
 			});
 			
 			$(".eliminar_trabajador").click(function(){
 				var entrada = $(this).attr("attr-id");
 				console.log(entrada);
 				if(confirm("¿Esta seguro que desea eliminar a este trabajador?")){
-					
 					$.post("eliminarTrabajadorById", {id_trabajador: entrada}, function(json){
-						
+						reload=true;
 					});
 					
 				}
 				
+			});
+			$('#myModal').on('hide.bs.modal', function (e) {
+				if(reload==true){
+					location.reload();
+				}
 			});
 		});
 	</script>
 	<style>
 		#myModal form input{
 			margin-bottom:5px;
+		}
+		#msjws{
+			display:block;
 		}
 	</style>
 </body>

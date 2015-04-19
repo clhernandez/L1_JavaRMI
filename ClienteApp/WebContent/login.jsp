@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="es"><head>
     <meta charset="utf-8">
@@ -32,7 +33,7 @@
 
     <div class="container">
 
-      <form class="form-signin" action="login">
+      <form class="form-signin" action="login" method="post">
         <h2 class="form-signin-heading">Login</h2>
         <label for="inputEmail" class="sr-only">Email</label>
         <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="">
@@ -44,8 +45,11 @@
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+        <c:if test="${not empty msj}">
+		    <div class="alert alert-info"> ${msj} </div>
+		</c:if>
       </form>
-
+		
     </div> <!-- /container -->
 
 

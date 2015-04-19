@@ -51,9 +51,9 @@
 				<label for="input_nombre_cargo" class="sr-only">cargo</label>
 				<input name="nombre_cargo" type="text" id="input_nombre_cargo" class="form-control" placeholder="nombre_cargo" required autofocus="">
 				<label for="input_sueldo_min" class="sr-only">sueldo minimo</label>
-				<input name="sueldo_min" type="text" id="input_sueldo_min" class="form-control" placeholder="sueldo_min" required autofocus="">
+				<input name="sueldo_min" type="number" id="input_sueldo_min" class="form-control" placeholder="sueldo_min" required autofocus="">
 				<label for="input_sueldo_max" class="sr-only">sueldo maximo</label>
-				<input name="sueldo_max" type="text" id="input_sueldo_max" class="form-control" placeholder="sueldo_max"  required autofocus="">
+				<input name="sueldo_max" type="number" id="input_sueldo_max" class="form-control" placeholder="sueldo_max"  required autofocus="">
 			</form>
 	      </div>
 	      <div class="modal-footer">

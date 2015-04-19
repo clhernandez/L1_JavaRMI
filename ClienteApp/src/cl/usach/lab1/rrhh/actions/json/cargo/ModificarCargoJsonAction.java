@@ -23,6 +23,7 @@ public class ModificarCargoJsonAction extends ActionSupport {
 			crg.setNombre_cargo(nombre_cargo);
 			crg.setSueldo_min(sueldo_min);
 			crg.setSueldo_max(sueldo_max);
+			crg.setId_cargo(id_cargo);
 			
 			if(cliente.modificarCargo(crg)){
 				msj= "Cargo modificado exitosamente.";

@@ -4,9 +4,6 @@ import java.util.List;
 
 import cl.usach.lab1.finanzas.rmi.client.ClienteFinanzasRMI;
 import cl.usach.lab1.finanzas.rmi.vo.Cliente;
-import cl.usach.lab1.rrhh.rmi.client.ClienteRrhhRMI;
-import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class IngresarClienteAction extends ActionSupport{
@@ -28,8 +25,8 @@ public class IngresarClienteAction extends ActionSupport{
 			clt.setApellido(apellido);
 			clt.setDireccion(direccion);
 			clt.setTelefono(telefono);
-			clt.setTelefono(ciudad);
-			clt.setTelefono(region);
+			clt.setCiudad(ciudad);
+			clt.setRegion(region);
 			if(clienteFINANZAS.ingresarCliente(clt)){
 				msj = "Cliente ingresado correctamente.";
 			}else{
@@ -42,9 +39,13 @@ public class IngresarClienteAction extends ActionSupport{
 
 	
 
+
+
 	public String getNombre() {
 		return nombre;
 	}
+
+
 
 
 
@@ -54,9 +55,29 @@ public class IngresarClienteAction extends ActionSupport{
 
 
 
+
+
+	public String getApellido() {
+		return apellido;
+	}
+
+
+
+
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+
+
+
+
 	public String getDireccion() {
 		return direccion;
 	}
+
+
 
 
 
@@ -66,9 +87,13 @@ public class IngresarClienteAction extends ActionSupport{
 
 
 
+
+
 	public String getTelefono() {
 		return telefono;
 	}
+
+
 
 
 
@@ -78,9 +103,13 @@ public class IngresarClienteAction extends ActionSupport{
 
 
 
+
+
 	public String getCiudad() {
 		return ciudad;
 	}
+
+
 
 
 
@@ -90,15 +119,21 @@ public class IngresarClienteAction extends ActionSupport{
 
 
 
+
+
 	public String getRegion() {
 		return region;
 	}
 
 
 
+
+
 	public void setRegion(String region) {
 		this.region = region;
 	}
+
+
 
 
 

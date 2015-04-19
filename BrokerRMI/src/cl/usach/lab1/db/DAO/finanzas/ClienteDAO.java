@@ -13,7 +13,7 @@ import cl.usach.lab1.utils.Configuraciones;
 public class ClienteDAO {
 	
 	public boolean ingresarCliente(Cliente clt) throws SQLException, ClassNotFoundException{
-		PreparedStatement pst = FinanzasConf.getConeccion().prepareStatement(Configuraciones.getConfig("RRHH.insertIntoCliente"));
+		PreparedStatement pst = FinanzasConf.getConeccion().prepareStatement(Configuraciones.getConfig("FINANZAS.insertIntoCliente"));
 			pst.setString(1, clt.getNombre());
 			pst.setString(2, clt.getApellido());
 			pst.setString(3, clt.getDireccion());
@@ -34,6 +34,7 @@ public class ClienteDAO {
 			pst.setString(4, clt.getTelefono());
 			pst.setString(5, clt.getCiudad());
 			pst.setString(6, clt.getRegion());
+			pst.setInt(7, clt.getId_cliente());
 		pst.execute();
 		
 		

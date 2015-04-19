@@ -8,7 +8,7 @@ import cl.usach.lab1.finanzas.rmi.vo.Cliente;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class GetClienteByRutJsonAction extends ActionSupport {
+public class GetClienteByIdJsonAction extends ActionSupport {
 
 
 	private static final long serialVersionUID = -2265665859968104370L;

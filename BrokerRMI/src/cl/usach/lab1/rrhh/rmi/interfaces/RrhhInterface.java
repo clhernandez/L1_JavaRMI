@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import cl.usach.lab1.rrhh.rmi.vo.Cargo;
+import cl.usach.lab1.rrhh.rmi.vo.Departamento;
 import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
 public interface RrhhInterface extends Remote {
@@ -18,6 +19,12 @@ public interface RrhhInterface extends Remote {
 	public Trabajador getTrabajadorByRut(String rut) throws RemoteException;
 	public List<Trabajador> listarTrabajadores() throws RemoteException;
 
+//Metodos CRUD para Departamentos
+	public boolean ingresarDepartamento(Departamento departamento) throws RemoteException;
+	public boolean modificarDepartamento(Departamento departamento) throws RemoteException;
+	public boolean eliminarDepartamento(int id_departamento) throws RemoteException;
+	public List<Departamento> listarDepartamentos() throws RemoteException;
+	
 	//Metodos CRUD para Cargos
 	public boolean ingresarCargo(Cargo cargo) throws RemoteException;
 	public boolean modificarCargo(Cargo cargo) throws RemoteException;

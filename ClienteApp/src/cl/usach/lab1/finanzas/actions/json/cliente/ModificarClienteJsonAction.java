@@ -1,15 +1,8 @@
 package cl.usach.lab1.finanzas.actions.json.cliente;
 
 import java.rmi.RemoteException;
-
-
-
-
-
-
 import cl.usach.lab1.finanzas.rmi.client.ClienteFinanzasRMI;
 import cl.usach.lab1.finanzas.rmi.vo.Cliente;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ModificarClienteJsonAction extends ActionSupport {
