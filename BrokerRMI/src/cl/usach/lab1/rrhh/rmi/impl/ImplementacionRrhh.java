@@ -9,8 +9,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import cl.usach.lab1.db.DAO.rrhh.CargoDAO;
 import cl.usach.lab1.db.DAO.rrhh.TrabajadorDAO;
 import cl.usach.lab1.rrhh.rmi.interfaces.RrhhInterface;
+import cl.usach.lab1.rrhh.rmi.vo.Cargo;
 import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
 public class ImplementacionRrhh extends UnicastRemoteObject implements
@@ -25,12 +27,7 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
         logger.log(Level.INFO, "Se ha instanciado la clase de ImplementacionAutorizador");
 	}
 
-	@Override
-	public List<HashMap> listarCargos() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+
 	//CRUD Trabajadores
 	@Override
 	public boolean ingresarTrabajador(Trabajador trabajador)
@@ -122,4 +119,80 @@ public class ImplementacionRrhh extends UnicastRemoteObject implements
 	}
 	//FIN CRUD Trabajadores
 
+	
+	//CRUD Cargos
+	@Override
+	public boolean ingresarCargo(Cargo cargo) throws RemoteException {
+		logger.log(Level.INFO, "Ingresar Cargo...");
+		CargoDAO objRRHH = new CargoDAO();
+		boolean resultado = false;
+		try {
+			 resultado = objRRHH.ingresarCargo(cargo);
+			logger.log(Level.INFO, "resultado ingresarCargo: " + resultado);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+
+	@Override
+	public boolean modificarCargo(Cargo cargo) throws RemoteException {
+		logger.log(Level.INFO, "Modificar Cargo...");
+		CargoDAO objRRHH = new CargoDAO();
+		boolean resultado = false;
+		try {
+			 resultado = objRRHH.modificarCargo(cargo);
+			logger.log(Level.INFO, "resultado modificarCargo: " + resultado);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+
+	@Override
+	public boolean eliminarCargo(int id_cargo) throws RemoteException {
+		logger.log(Level.INFO, "Eliminar Cargo...");
+		CargoDAO objRRHH = new CargoDAO();
+		boolean resultado = false;
+		try {
+			 resultado = objRRHH.eliminarCargo(id_cargo);
+			logger.log(Level.INFO, "resultado EliminarCargo: " + resultado);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return resultado;
+	}
+	@Override
+	public Cargo getCargoById(int id_cargo) throws RemoteException {
+		logger.log(Level.INFO, "Get Cargo...");
+		CargoDAO objRRHH = new CargoDAO();
+		Cargo cargo = null;
+		try {
+			cargo = objRRHH.getCargoById(id_cargo);
+			logger.log(Level.INFO, "resultado getCargo: " + cargo);
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());
+			e.printStackTrace();
+		}
+		return cargo;
+	}
+	@Override
+	public List<Cargo> listarCargos() throws RemoteException {
+		logger.log(Level.INFO, "Obteniendo Listado Cargos...");
+		CargoDAO dao = new CargoDAO();
+		List<Cargo> cargos = new ArrayList();
+		try {
+			cargos = dao.listarCargos();
+			logger.log(Level.INFO, "Cantidad de cargos obtenidos: " + cargos.size());
+		} catch (ClassNotFoundException | SQLException e) {
+			logger.log(Level.WARNING, e.getMessage());			
+			e.printStackTrace();
+		}
+		return cargos;
+	}
+	//FIN CRUD Cargos
+	
 }

@@ -37,10 +37,24 @@
 		<action name="listarTrabajadores" class="cl.usach.lab1.rrhh.actions.ListarTrabajadoresAction">
 			<result name="success">/rrhh/listarTrabajadores.jsp</result>
 		</action>
-		<action name="ingresarTrabajador" class="cl.usach.lab1.rrhh.actions.IngresarTrabajadorAction">
-			
-			<result name="success">/rrhh/ingresarTrabajador.jsp</result>
+		<action name="ingresarTrabajador" class="cl.usach.lab1.rrhh.actions.IngresarTrabajadorAction">		
+	    <result name="success">/rrhh/ingresarTrabajador.jsp</result>
 		</action>
+		
+		<action name="listarCargos" class="cl.usach.lab1.rrhh.actions.ListarCargosAction">
+			<result name="success">/rrhh/listarCargos.jsp</result>
+		</action>
+		<action name="ingresarCargo" class="cl.usach.lab1.rrhh.actions.IngresarCargoAction">		
+	    	<result name="success">/rrhh/ingresarCargo.jsp</result>
+		</action>
+
+		<action name="listarClientes" class="cl.usach.lab1.finanzas.actions.ListarClientesAction">
+			<result name="success">/finanzas/listarClientes.jsp</result>
+		</action>
+		<action name="ingresarCliente" class="cl.usach.lab1.finanzas.actions.IngresarClientesAction">		
+	    	<result name="success">/finanzas/ingresarCargo.jsp</result>
+		</action>
+		
 	</package>
 	<package name="json" extends="json-default">
 		<action name="getTrabajadorByRut" class="cl.usach.lab1.rrhh.actions.json.trabajador.GetTrabajadorByRutJsonAction">
@@ -48,10 +62,31 @@
 		</action>
 		<action name="modificar_trabajador" class="cl.usach.lab1.rrhh.actions.json.trabajador.ModificarTrabajadorJsonAction">
 			<result type="json"></result>
-		</action>
+		</action>	
 		<action name="eliminarTrabajadorById" class="cl.usach.lab1.rrhh.actions.json.trabajador.EliminarTrabajadorJsonAction">
 			<result type="json"></result>
+		</action>	
+		<action name="getCargoByNombre" class="cl.usach.lab1.rrhh.actions.json.cargo.GetCargoByIdJsonAction">
+			<result type="json"></result>
 		</action>
+		<action name="modificar_cargo" class="cl.usach.lab1.rrhh.actions.json.cargo.ModificarCargoJsonAction">
+			<result type="json"></result>
+		</action>	
+		<action name="eliminarCargoById" class="cl.usach.lab1.rrhh.actions.json.cargo.EliminarCargoJsonAction">
+			<result type="json"></result>
+		</action>	
+		
+		<action name="getClienteById" class="cl.usach.lab1.finanzas.actions.json.cliente.GetClienteByIdJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="modificar_cliente" class="cl.usach.lab1.finanzas.actions.json.cliente.ModificarClienteJsonAction">
+			<result type="json"></result>
+		</action>	
+		<action name="eliminarClienteById" class="cl.usach.lab1.cliente.actions.json.cliente.EliminarClienteJsonAction">
+			<result type="json"></result>
+		</action>	
+		
+
 	</package>
 	
 </struts>

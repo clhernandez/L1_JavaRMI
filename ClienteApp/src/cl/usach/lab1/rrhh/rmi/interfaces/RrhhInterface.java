@@ -22,6 +22,7 @@ public interface RrhhInterface extends Remote {
 	public boolean ingresarCargo(Cargo cargo) throws RemoteException;
 	public boolean modificarCargo(Cargo cargo) throws RemoteException;
 	public boolean eliminarCargo(int id_cargo) throws RemoteException;
+	public Cargo getCargoById(int id_cargo) throws RemoteException;
 	public List<Cargo> listarCargos() throws RemoteException;
 	
 }

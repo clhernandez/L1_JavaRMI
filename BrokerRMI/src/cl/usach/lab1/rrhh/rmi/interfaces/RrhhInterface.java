@@ -5,11 +5,10 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.List;
 
+import cl.usach.lab1.rrhh.rmi.vo.Cargo;
 import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
 public interface RrhhInterface extends Remote {
-	
-	public List<HashMap> listarCargos() throws RemoteException;
 	
 	//Metodos CRUD para Trabajadores.
 	public boolean ingresarTrabajador(Trabajador trabajador) throws RemoteException;
@@ -18,4 +17,12 @@ public interface RrhhInterface extends Remote {
 	public Trabajador loginTrabajador(String usuario, String password) throws RemoteException;
 	public Trabajador getTrabajadorByRut(String rut) throws RemoteException;
 	public List<Trabajador> listarTrabajadores() throws RemoteException;
+
+	//Metodos CRUD para Cargos
+	public boolean ingresarCargo(Cargo cargo) throws RemoteException;
+	public boolean modificarCargo(Cargo cargo) throws RemoteException;
+	public boolean eliminarCargo(int id_cargo) throws RemoteException;
+	public Cargo getCargoById(int id_cargo) throws RemoteException;
+	public List<Cargo> listarCargos() throws RemoteException;
+	
 }

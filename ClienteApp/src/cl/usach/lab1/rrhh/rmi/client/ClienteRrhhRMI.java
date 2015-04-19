@@ -105,7 +105,14 @@ public class ClienteRrhhRMI {
     	}
     	return false;
     }
-
+    public Cargo getCargoById(int id_cargo) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.getCargoById(id_cargo);
+    	}
+    	return null;
+    }
+    
     
      
 }

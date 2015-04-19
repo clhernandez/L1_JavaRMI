@@ -2,9 +2,11 @@ package cl.usach.lab1.finanzas.rmi.client;
 
 
 import java.rmi.RemoteException;
+import java.util.List;
 
 import cl.usach.lab1.finanzas.rmi.conn.ConexionFinanzasRMI;
 import cl.usach.lab1.finanzas.rmi.interfaces.FinanzasInterface;
+import cl.usach.lab1.finanzas.rmi.vo.Cliente;
 
 
 public class ClienteFinanzasRMI {
@@ -25,6 +27,46 @@ public class ClienteFinanzasRMI {
     		return objetoRemoto.loginUsuario(nomus, passwd);
     	}
     	return false;
+    }
+    
+    //CLIENTES   
+    public List<Cliente> listarClientes() throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.listarClientes();
+    	}
+    	return null;
+    }
+    
+    public boolean ingresarCliente(Cliente clt) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.ingresarCliente(clt);
+    	}
+    	return false;
+    }
+    
+    public boolean modificarCliente(Cliente clt) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.modificarCliente(clt);
+    	}
+    	return false;
+    }
+    
+    public boolean eliminarCliente(int id_cliente) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.eliminarCliente(id_cliente);
+    	}
+    	return false;
+    }
+    public Cliente getClienteById(int id_cliente) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.getClienteById(id_cliente);
+    	}
+    	return null;
     }
       
 }
