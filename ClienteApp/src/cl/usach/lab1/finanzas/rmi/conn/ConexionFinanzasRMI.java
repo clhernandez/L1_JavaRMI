@@ -21,17 +21,13 @@ public class ConexionFinanzasRMI {
         try {
             
             //Se le otorga el permiso necesario para poder ejecutar las funciones correspondientes
-        	System.out.println("set permisos");
             java.security.AllPermission allPermision = new java.security.AllPermission();          
             System.setProperty("java.security.policy", "rmi.policy");
-            System.out.println("ok");
             //Se inicia RMI-Registry para el registro del objeto
             
             try {
                 //Obtenemos el Registry del servidor RMI
-            	System.out.println("get registry");
                 registry = LocateRegistry.getRegistry(IP, Puerto);
-                System.out.println("ok");
             //De existir algún error con el registro que se desea obtener del servidor, se mostrará un mensaje
             } catch (RemoteException e) {
                 System.out.println(IP + ":" + Puerto);
@@ -40,9 +36,7 @@ public class ConexionFinanzasRMI {
             }
 
             //Vamos al Registry y miramos el Objeto "nombreObjRemoto" para poder usarlo.
-            System.out.println("lookup: "+nombreObjetoRemoto);
             servidor = (FinanzasInterface) registry.lookup(nombreObjetoRemoto);
-            System.out.println("ok");
             this.conectado = true;
             return true;
             

@@ -9,11 +9,11 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand"
-				href="${pageContext.request.contextPath}/rrhh/dashboard">RRHH</a>
+				href="${pageContext.request.contextPath}/finanzas/dashboard">Finanzas</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="${pageContext.request.contextPath}/rrhh/dashboard">Dashboard</a></li>
+				<li><a href="${pageContext.request.contextPath}/finanzas/dashboard">Dashboard</a></li>
 				<li><a href="#"><c:out value="${sessionScope.nombre}" /> <c:out value="${sessionScope.apellido}" /></a></li>
 				<li><a href="${pageContext.request.contextPath}/logout">Cerrar Sesión</a></li>
 			</ul>
