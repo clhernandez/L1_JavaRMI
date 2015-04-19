@@ -29,6 +29,13 @@
 		<action name="listarProductos" class="cl.usach.lab1.finanzas.actions.productos.ListarProductosAction">
 			<result name="success">/finanzas/listarProductos.jsp</result>
 		</action>
+		
+		<action name="ingresarOrdenProducto" class="cl.usach.lab1.finanzas.actions.ordenProductos.IngresarOrdenProductoAction">
+			<result name="success">/finanzas/ingresarOrdenProducto.jsp</result>
+		</action>
+		<action name="listarOrdenProductos" class="cl.usach.lab1.finanzas.actions.ordenProductos.ListarOrdenProductosAction">
+			<result name="success">/finanzas/listarOrdenProductos.jsp</result>
+		</action>
 	</package>
 	
 	<package name="rrhh" extends="struts-default" namespace="/rrhh">
@@ -61,6 +68,16 @@
 			<result type="json"></result>
 		</action>
 		<action name="eliminarProductoById" class="cl.usach.lab1.finanzas.actions.productos.json.EliminarProductoJsonAction">
+			<result type="json"></result>
+		</action>
+		
+		<action name="getOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.GetOrdenProductoByIdJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="modificarOrdenProducto" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.ModificarOrdenProductoJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="eliminarOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.EliminarOrdenProductoJsonAction">
 			<result type="json"></result>
 		</action>
 		
