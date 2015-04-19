@@ -2,7 +2,6 @@ package cl.usach.lab1.rrhh.rmi.vo;
 
 import java.io.Serializable;
 
-
 public class Departamento implements Serializable{
 	
 
@@ -10,14 +9,10 @@ public class Departamento implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -2509802864598818760L;
-	/**
-	 * 
-	 */
 	private int id_departamento;
 	private String nombre_departamento;
 	private String administrador;
 	private String ubicacion;
-	
 	public int getId_departamento() {
 		return id_departamento;
 	}
@@ -39,8 +34,10 @@ public class Departamento implements Serializable{
 	public String getUbicacion() {
 		return ubicacion;
 	}
-	public void setUbicacion(String Ubicacion) {
+	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-		
+	
+
+
 }

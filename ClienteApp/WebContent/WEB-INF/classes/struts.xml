@@ -6,19 +6,13 @@
 	<constant name="struts.devMode" value="true" />
 	
 	<package name="login" extends="struts-default">
-		<action name="login" class="cl.usach.lab1.autorizador.actions.InicioAction"
-			method="execute">
-			<result type="redirectAction" name="FINANZAS">
-				<param name="actionName">dashboard</param>
-				<param name="namespace">/finanzas</param>
-			</result>
-			<result type="redirectAction" name="RRHH">
-				<param name="actionName">dashboard</param>
-				<param name="namespace">/rrhh</param>
-			</result>
+		<action name="login" class="cl.usach.lab1.autorizador.actions.InicioAction" method="execute">
+			<result type="redirect" name="FINANZAS">/finanzas/dashboard.action</result>
+			<result type="redirect" name="RRHH">/rrhh/dashboard.action</result>
 			<!-- <result name="success">/web/index.jsp</result> -->
 			<result name="error">/login.jsp</result>
 		</action>
+
 		
 		<action name="logout" class="cl.usach.lab1.autorizador.actions.InicioAction" method="logout">
 			<result>/login.jsp</result>
@@ -43,6 +37,12 @@
 		<action name="ingresarCliente" class="cl.usach.lab1.finanzas.actions.IngresarClienteAction">		
 	    	<result name="success">/finanzas/ingresarCliente.jsp</result>
 		</action>
+		<action name="ingresarOrdenProducto" class="cl.usach.lab1.finanzas.actions.ordenProductos.IngresarOrdenProductoAction">
+			<result name="success">/finanzas/ingresarOrdenProducto.jsp</result>
+		</action>
+		<action name="listarOrdenProductos" class="cl.usach.lab1.finanzas.actions.ordenProductos.ListarOrdenProductosAction">
+			<result name="success">/finanzas/listarOrdenProductos.jsp</result>
+		</action>
 	</package>
 	
 	<package name="rrhh" extends="struts-default" namespace="/rrhh">
@@ -62,7 +62,13 @@
 		<action name="ingresarCargo" class="cl.usach.lab1.rrhh.actions.IngresarCargoAction">		
 	    	<result name="success">/rrhh/ingresarCargo.jsp</result>
 		</action>
-
+		<action name="listarDepartamentos" class="cl.usach.lab1.rrhh.actions.ListarDepartamentosAction">
+			<result name="success">/rrhh/listarDepartamentos.jsp</result>
+		</action>
+		<action name="ingresarDepartamento" class="cl.usach.lab1.rrhh.actions.IngresarDepartamentoAction">
+			
+			<result name="success">/rrhh/ingresarDepartamento.jsp</result>
+		</action>
 	</package>
 
 	<package name="json" extends="json-default">
@@ -107,7 +113,25 @@
 			<result type="json"></result>
 		</action>
 		
-
+<action name="getOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.GetOrdenProductoByIdJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="modificarOrdenProducto" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.ModificarOrdenProductoJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="eliminarOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.EliminarOrdenProductoJsonAction">
+			<result type="json"></result>
+		</action>
+		
+				<action name="getDepartamentoById" class="cl.usach.lab1.rrhh.actions.json.departamento.GetDepartamentoByIdJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="modificar_departamento" class="cl.usach.lab1.rrhh.actions.json.departamento.ModificarDepartamentoJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="eliminarDepartamentoById" class="cl.usach.lab1.rrhh.actions.json.departamento.EliminarDepartamentoJsonAction">
+			<result type="json"></result>
+		</action>
 	</package>
 	
 </struts>

@@ -64,7 +64,6 @@ public class ProductoDAO {
 		ResultSet rs = pst.executeQuery();
 		while(rs.next()){
 			prd = new Producto();
-			System.out.println(rs.getString("nombre"));
 			prd.setId_producto(rs.getInt("id_producto"));
 			prd.setNombre(rs.getString("nombre"));
 			prd.setDescripcion(rs.getString("descripcion"));

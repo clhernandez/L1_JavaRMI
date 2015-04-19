@@ -7,6 +7,7 @@ import java.util.List;
 import cl.usach.lab1.finanzas.rmi.conn.ConexionFinanzasRMI;
 import cl.usach.lab1.finanzas.rmi.interfaces.FinanzasInterface;
 import cl.usach.lab1.finanzas.rmi.vo.Cliente;
+import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
 
 
@@ -22,6 +23,9 @@ public class ClienteFinanzasRMI {
     	conexion = new ConexionFinanzasRMI();
 	}
     
+    /**
+     * CRUD PRODUCTOS
+     */
     public boolean loginUsuario(String nomus, String passwd) throws RemoteException{
     	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
     		objetoRemoto = conexion.getServidor();
@@ -106,6 +110,48 @@ public class ClienteFinanzasRMI {
     	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
     		objetoRemoto = conexion.getServidor();
     		return objetoRemoto.listarProductos();
+    	}
+    	return null;
+    }
+    /**
+     * CRUD ORDEN PRODUCTO
+     */
+    public boolean ingresarOrdenProducto(OrdenProducto ordenProducto) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.ingresarOrdenProducto(ordenProducto);
+    	}
+    	return false;
+    }
+    
+    public boolean modificarOrdenProducto(OrdenProducto ordenProducto) throws RemoteException {
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.modificarOrdenProducto(ordenProducto);
+    	}
+    	return false;
+	}
+    
+    public boolean eliminarOrdenProducto(int id_ordenProducto) throws RemoteException {
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.eliminarOrdenProducto(id_ordenProducto);
+    	}
+    	return false;
+	}
+    
+    public OrdenProducto getOrdenProductoById(int id_ordenProducto) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.getOrdenProductoById(id_ordenProducto);
+    	}
+    	return null;
+    }
+    
+    public List<OrdenProducto> listarOrdenProductos() throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.listarOrdenProductos();
     	}
     	return null;
     }

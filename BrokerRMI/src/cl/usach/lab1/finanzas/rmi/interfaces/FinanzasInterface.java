@@ -6,6 +6,7 @@ import java.util.List;
 
 import cl.usach.lab1.finanzas.rmi.vo.Cliente;
 import cl.usach.lab1.rrhh.rmi.vo.Cargo;
+import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
 
 public interface FinanzasInterface extends Remote {
@@ -21,5 +22,10 @@ public interface FinanzasInterface extends Remote {
 	public boolean eliminarCliente(int id_cliente) throws RemoteException;
 	public Cliente getClienteById(int id_cliente) throws RemoteException;
 	public List<Cliente> listarClientes() throws RemoteException;
-	
+	//Metodos CRUD para Productos
+	public boolean ingresarOrdenProducto(OrdenProducto ordenProducto) throws RemoteException;
+	public boolean modificarOrdenProducto(OrdenProducto ondenProducto) throws RemoteException;
+	public boolean eliminarOrdenProducto(int id_orden_producto) throws RemoteException;
+	public OrdenProducto getOrdenProductoById(int id_orden_producto) throws RemoteException;
+	public List<OrdenProducto> listarOrdenProductos() throws RemoteException;
 }

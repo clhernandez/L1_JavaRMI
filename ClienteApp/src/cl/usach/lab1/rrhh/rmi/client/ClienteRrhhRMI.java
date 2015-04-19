@@ -7,6 +7,7 @@ import java.util.List;
 import cl.usach.lab1.rrhh.rmi.conn.ConexionRrhhRMI;
 import cl.usach.lab1.rrhh.rmi.interfaces.RrhhInterface;
 import cl.usach.lab1.rrhh.rmi.vo.Cargo;
+import cl.usach.lab1.rrhh.rmi.vo.Departamento;
 import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
 
@@ -113,6 +114,49 @@ public class ClienteRrhhRMI {
     	return null;
     }
     
+    //Departamentos
     
+   
+    public List<Departamento> listarDepartamentos() throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.listarDepartamentos();
+    	}
+    	return null;
+    }
+    
+    public boolean ingresarDepartamento(Departamento dep) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.ingresarDepartamento(dep);
+    	}
+    	return false;
+    }
+    
+    public boolean modificarDepartamento(Departamento dep) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.modificarDepartamento(dep);
+    	}
+    	return false;
+    }
+    
+    public boolean eliminarDepartamento(int id_departamento) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.eliminarDepartamento(id_departamento);
+    	}
+    	return false;
+    }
+    
+    public Departamento getDepartamentoById(int id_departamento) throws RemoteException{
+    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaRrhhRemota)) {
+    		objetoRemoto = conexion.getServidor();
+    		return objetoRemoto.getDepartamentoById(id_departamento);
+    	}
+    	return null;
+    }
+    
+    //Fin Departamentos
      
 }
