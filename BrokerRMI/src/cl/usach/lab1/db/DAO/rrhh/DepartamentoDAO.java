@@ -8,35 +8,32 @@ import java.util.List;
 
 import cl.usach.lab1.db.conf.RrhhConf;
 import cl.usach.lab1.rrhh.rmi.vo.Departamento;
-import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 import cl.usach.lab1.utils.Configuraciones;
 
 public class DepartamentoDAO {
 	
 	public boolean ingresarDepartamento(Departamento dep) throws SQLException, ClassNotFoundException{
 		PreparedStatement pst = RrhhConf.getConeccion().prepareStatement(Configuraciones.getConfig("RRHH.insertIntoDepartamento"));
-		//verificar que no exista otro trabajador con el mismo rut
-		return false;
+		pst.setString(1, dep.getNombre_departamento());
+		pst.setString(2, dep.getAdministrador());
+		pst.setString(3, dep.getUbicacion());
+		pst.execute();
+		return true;
 	}
 	public boolean modificarDepartamento(Departamento dep)throws ClassNotFoundException, SQLException{
-		    PreparedStatement pst=null;
-			pst = RrhhConf.getConeccion().prepareStatement(Configuraciones.getConfig("RRHH.updateDepartamento"));
-			pst.setInt(1, dep.getId_departamento());
-			pst.setString(2, dep.getNombre_departamento());
-			pst.setString(3, dep.getAdministrador());
-			pst.setString(4, dep.getUbicacion());
-
-	
+	    PreparedStatement pst = RrhhConf.getConeccion().prepareStatement(Configuraciones.getConfig("RRHH.updateDepartamento"));
+		pst.setString(1, dep.getNombre_departamento());
+		pst.setString(2, dep.getAdministrador());
+		pst.setString(3, dep.getUbicacion());
+		pst.setInt(4, dep.getId_departamento());	
 		pst.execute();
-		
-		
+
 		return true;
 	}
 	
 	public boolean eliminarDepartamento(int id_departamento)throws ClassNotFoundException, SQLException{
 		PreparedStatement pst = RrhhConf.getConeccion().prepareStatement(Configuraciones.getConfig("RRHH.deleteDepartamentoByID"));
 		pst.setInt(1, id_departamento);
-		System.out.println(id_departamento);
 		if(pst.executeUpdate()>0)
 			return true;
 		else

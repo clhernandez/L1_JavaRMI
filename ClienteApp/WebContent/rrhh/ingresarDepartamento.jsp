@@ -11,13 +11,11 @@
 				<div class="table-responsive">
 					<h1 class="page-header">Ingresar Departamento</h1>
 				
-					<form class="form-signin" action="ingresarDepartamento">
-						<label for="input_id_departamento" class="sr-only">id_departamento</label>
-						<input name="id_departamento" type="text" id="input_id_departamento" class="form-control" placeholder="id_departamento" required autofocus="">
+					<form class="form-signin" action="ingresarDepartamento" method="post">
 						<label for="input_nombre_departamento" class="sr-only">nombre_departamento</label>
 						<input name="nombre_departamento" type="text" id="input_nombre_departamento" class="form-control" placeholder="nombre_departamento" required autofocus="">
 						<label for="input_administrador" class="sr-only">administrador</label>
-						<input name="administrador" type="text" id="input_administrador" class="form-control" placeholder="administrador"  required autofocus="">
+						<input name="administrador" type="text" id="input_administrador" class="form-control" placeholder="administrador"  autofocus="">
 						<label for="input_ubicacion" class="sr-only">ubicacion</label>
 						<input name="ubicacion" type="text" id="input_ubicacion" class="form-control" placeholder="ubicacion"  autofocus="">
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>

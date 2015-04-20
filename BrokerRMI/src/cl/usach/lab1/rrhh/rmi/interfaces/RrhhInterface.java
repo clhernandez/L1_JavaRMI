@@ -2,7 +2,6 @@ package cl.usach.lab1.rrhh.rmi.interfaces;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.HashMap;
 import java.util.List;
 
 import cl.usach.lab1.rrhh.rmi.vo.Cargo;

@@ -24,6 +24,8 @@ public class TrabajadorDAO {
 			pst.setString(6, trb.getTelefono());
 			pst.setString(7, trb.getFecha_contratacion());
 			pst.setInt(8, trb.getSueldo());
+			pst.setInt(9, trb.getId_cargo_fk());
+			pst.setInt(10, trb.getId_departamento_fk());
 			pst.execute();
 			return true;
 		}
@@ -71,7 +73,6 @@ public class TrabajadorDAO {
 	public boolean eliminarTrabajador(int id_trabajador)throws ClassNotFoundException, SQLException{
 		PreparedStatement pst = RrhhConf.getConeccion().prepareStatement(Configuraciones.getConfig("RRHH.deleteTrabajadorByID"));
 		pst.setInt(1, id_trabajador);
-		System.out.println(id_trabajador);
 		if(pst.executeUpdate()>0)
 			return true;
 		else

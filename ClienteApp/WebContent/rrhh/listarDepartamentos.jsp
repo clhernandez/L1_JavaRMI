@@ -28,7 +28,7 @@
 								<td>${dep.nombre_departamento}</td>
 								<td>${dep.administrador}</td>
 								<td>${dep.ubicacion}</td>
-								<td><a href="#" class="modificar_departamento text-center" attr-id="${dep.nombre_departamento}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+								<td><a href="#" class="modificar_departamento text-center" attr-id="${dep.id_departamento}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
 								<td><a href="#" class="eliminar_departamento text-center" attr-id="${dep.id_departamento}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 							</tr>
 							</c:forEach>
@@ -55,7 +55,9 @@
 				<label for="input_ubicacion" class="sr-only">ubicacion</label>
 				<input name="ubicacion" type="text" id="input_ubicacion" class="form-control" placeholder="ubicacion"  required autofocus="">
 			      </form>
+			      <span id='msjws' class='alert alert-info hide' ></span>
 	      </div>
+	      
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 	        <button type="button" class="btn btn-primary" id="guardar_departamento">Guardar Cambios</button>
@@ -67,13 +69,12 @@
 	<jsp:include page="base/footer.jsp" flush="true"></jsp:include>
 	<script>
 		$(document).ready(function(){
+			var reload = false;
 			$(".modificar_departamento").click(function(){
 				var entrada = $(this).attr("attr-id");
 				console.log(entrada);
-				$.post("getDepartamentoById", {nombre_departamento: entrada}, function(json){
-					console.log(json);
+				$.post("getDepartamentoById", {id_departamento: entrada}, function(json){
 					if(json!=null){
-						
 						$("#input_id_departamento").val(json.id_departamento);
 						$("#input_nombre_departamento").val(json.nombre_departamento);
 						$("#input_administrador").val(json.administrador);
@@ -84,29 +85,38 @@
 				
 			});
 			$("#guardar_departamento").click(function(){
-				console.log( $("#form_mod_departamento").serialize() );
 				$.post("modificar_departamento", $("#form_mod_departamento").serialize(), function(json){
-					console.log(json);
+					$("#msjws").empty();
+					$("#msjws").text(json.msj);
+					$("#msjws").removeClass("hide");
+					reload=true;
 				});
 			});
 			
 			$(".eliminar_departamento").click(function(){
 				var entrada = $(this).attr("attr-id");
-				console.log(entrada);
 				if(confirm("¿Esta seguro que desea eliminar a este departamento?")){
 					
 					$.post("eliminarDepartamentoById", {id_departamento: entrada}, function(json){
-						
+						location.reload();
 					});
 					
 				}
 				
+			});
+			$('#myModal').on('hide.bs.modal', function (e) {
+				if(reload==true){
+					location.reload();
+				}
 			});
 		});
 	</script>
 	<style>
 		#myModal form input{
 			margin-bottom:5px;
+		}
+		#msjws{
+			display:block;
 		}
 	</style>
 </body>

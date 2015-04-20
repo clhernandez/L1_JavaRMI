@@ -75,7 +75,7 @@
 					if(json!=null){
 						console.log(json);
 						$("#input_id_orden_producto").val(json.id_orden_producto);
-						$('.selDiv option[value="'+json.id_producto+'"]')
+						$("#input_id_producto option[value="+ json.id_producto +"]").attr("selected",true);
 						$("#input_cantidad").val(json.cantidad);
 						
 						$('#myModal').modal();
@@ -116,6 +116,9 @@
 	</script>
 	<style>
 		#myModal form input{
+			margin-bottom:5px;
+		}
+		#myModal form select{
 			margin-bottom:5px;
 		}
 		#msjws{
