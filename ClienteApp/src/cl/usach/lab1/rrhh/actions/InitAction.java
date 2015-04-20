@@ -2,6 +2,8 @@ package cl.usach.lab1.rrhh.actions;
 
 import java.util.Map;
 
+import cl.usach.lab1.rrhh.rmi.client.ClienteRrhhRMI;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -10,11 +12,21 @@ public class InitAction extends ActionSupport{
 	private String nombre;
 	private String apellido;
 	
+	private int cantidadCargos;
+	private int cantidadDepartamentos;
+	private int cantidadTrabajadores;
+	
 	public String execute() throws Exception {
 		Map sesion = ActionContext.getContext().getSession();
 		email = (String) sesion.get("email");
 		nombre = (String) sesion.get("nombre");
 		apellido = (String) sesion.get("apellido");
+		
+		ClienteRrhhRMI cliente = new ClienteRrhhRMI();
+		cantidadCargos = cliente.listarCargos().size();
+		cantidadDepartamentos = cliente.listarDepartamentos().size();
+		cantidadTrabajadores = cliente.listarTrabajadores().size();
+		
 		return SUCCESS;
 	}
 

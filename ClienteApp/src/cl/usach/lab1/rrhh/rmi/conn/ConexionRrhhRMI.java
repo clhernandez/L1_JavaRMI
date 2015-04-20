@@ -6,6 +6,13 @@ import java.rmi.registry.Registry;
 
 import cl.usach.lab1.rrhh.rmi.interfaces.RrhhInterface;
 
+/**
+*
+* @author Daniel Wladdimiro Cottet
+* @title Taller de sistemas distribuidos - Clase 1
+* 
+* Modificado por clhernandez 12-04-2015
+*/
 public class ConexionRrhhRMI {
     private Registry registry;  //Registro de la conexión del usuario con el servidor
     private boolean conectado;  //Estado de conexión del usuario con el servidor

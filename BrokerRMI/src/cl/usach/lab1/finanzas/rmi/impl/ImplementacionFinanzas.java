@@ -5,25 +5,26 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
-
-import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
+import cl.usach.lab1.db.DAO.finanzas.ClienteDAO;
 import cl.usach.lab1.db.DAO.finanzas.OrdenDAO;
 import cl.usach.lab1.db.DAO.finanzas.OrdenProductoDAO;
-import cl.usach.lab1.db.DAO.finanzas.ClienteDAO;
 import cl.usach.lab1.db.DAO.finanzas.ProductoDAO;
 import cl.usach.lab1.finanzas.rmi.interfaces.FinanzasInterface;
 import cl.usach.lab1.finanzas.rmi.vo.Cliente;
 import cl.usach.lab1.finanzas.rmi.vo.Orden;
+import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
 
-
+/**
+*
+* @author Daniel Wladdimiro Cottet
+* @title Taller de sistemas distribuidos - Clase 1
+* 
+* Modificado por clhernandez 12-04-2015
+*/
 public class ImplementacionFinanzas extends UnicastRemoteObject implements
 		FinanzasInterface {
 

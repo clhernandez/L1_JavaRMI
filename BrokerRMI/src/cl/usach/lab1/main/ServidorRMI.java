@@ -12,10 +12,12 @@ import cl.usach.lab1.finanzas.rmi.interfaces.FinanzasInterface;
 import cl.usach.lab1.rrhh.rmi.interfaces.RrhhInterface;
 
 /**
- *
- * @author Daniel Wladdimiro Cottet
- * @title Taller de sistemas distribuidos - Clase 1
- */
+*
+* @author Daniel Wladdimiro Cottet
+* @title Taller de sistemas distribuidos - Clase 1
+* 
+* Modificado por clhernandez 12-04-2015
+*/
 
 public class ServidorRMI {
 

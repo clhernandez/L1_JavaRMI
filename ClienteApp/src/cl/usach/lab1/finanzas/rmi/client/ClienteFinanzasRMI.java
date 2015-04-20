@@ -11,7 +11,13 @@ import cl.usach.lab1.finanzas.rmi.vo.Orden;
 import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
 
-
+/**
+*
+* @author Daniel Wladdimiro Cottet
+* @title Taller de sistemas distribuidos - Clase 1
+* 
+* Modificado por clhernandez 12-04-2015
+*/
 public class ClienteFinanzasRMI {
     public static int Puerto = 2015;                                 //Número del puerto que está alojado el servidor
     public static String IPServer = "localhost";                    //Dirección IP del servidor, la cual podría utilizarse por defecto el localhost
@@ -27,13 +33,6 @@ public class ClienteFinanzasRMI {
     /**
      * CRUD PRODUCTOS
      */
-    public boolean loginUsuario(String nomus, String passwd) throws RemoteException{
-    	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
-    		objetoRemoto = conexion.getServidor();
-    		return objetoRemoto.loginUsuario(nomus, passwd);
-    	}
-    	return false;
-    }
     
     //CLIENTES   
     public List<Cliente> listarClientes() throws RemoteException{

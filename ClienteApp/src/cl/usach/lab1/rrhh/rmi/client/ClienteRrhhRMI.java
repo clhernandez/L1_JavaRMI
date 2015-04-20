@@ -11,6 +11,13 @@ import cl.usach.lab1.rrhh.rmi.vo.Departamento;
 import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
 
+/**
+*
+* @author Daniel Wladdimiro Cottet
+* @title Taller de sistemas distribuidos - Clase 1
+* 
+* Modificado por clhernandez 12-04-2015
+*/
 public class ClienteRrhhRMI {
     public static int Puerto = 2015;                                 //Número del puerto que está alojado el servidor
     public static String IPServer = "localhost";                    //Dirección IP del servidor, la cual podría utilizarse por defecto el localhost

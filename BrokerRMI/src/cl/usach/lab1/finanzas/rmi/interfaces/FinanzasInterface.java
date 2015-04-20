@@ -9,7 +9,13 @@ import cl.usach.lab1.rrhh.rmi.vo.Cargo;
 import cl.usach.lab1.finanzas.rmi.vo.Orden;
 import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
-
+/**
+*
+* @author Daniel Wladdimiro Cottet
+* @title Taller de sistemas distribuidos - Clase 1
+* 
+* Modificado por clhernandez 12-04-2015
+*/
 public interface FinanzasInterface extends Remote {
 	
 	//Metodos CRUD para Productos

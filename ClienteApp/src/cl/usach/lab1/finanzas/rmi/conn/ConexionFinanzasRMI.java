@@ -5,7 +5,13 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import cl.usach.lab1.finanzas.rmi.interfaces.FinanzasInterface;
-
+/**
+*
+* @author Daniel Wladdimiro Cottet
+* @title Taller de sistemas distribuidos - Clase 1
+* 
+* Modificado por clhernandez 12-04-2015
+*/
 public class ConexionFinanzasRMI {
     private Registry registry;  //Registro de la conexión del usuario con el servidor
     private boolean conectado;  //Estado de conexión del usuario con el servidor

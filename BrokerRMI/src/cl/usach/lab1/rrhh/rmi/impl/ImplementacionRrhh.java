@@ -17,6 +17,13 @@ import cl.usach.lab1.rrhh.rmi.vo.Departamento;
 import cl.usach.lab1.rrhh.rmi.vo.Cargo;
 import cl.usach.lab1.rrhh.rmi.vo.Trabajador;
 
+/**
+*
+* @author Daniel Wladdimiro Cottet
+* @title Taller de sistemas distribuidos - Clase 1
+* 
+* Modificado por clhernandez 12-04-2015
+*/
 public class ImplementacionRrhh extends UnicastRemoteObject implements
 		RrhhInterface {
 
