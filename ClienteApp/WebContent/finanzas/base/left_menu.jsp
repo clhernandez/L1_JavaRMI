@@ -12,6 +12,12 @@
 
 	</ul>
 	<ul class="nav nav-sidebar">
+		<li class="active">Menu Ordenes</li>
+		<li><a href="${pageContext.request.contextPath}/finanzas/listarOrdenes">Listar Ordenes</a></li>
+		<li><a href="${pageContext.request.contextPath}/finanzas/ingresarOrden">Ingresar Orden</a></li>
+	</ul>
+	
+	<ul class="nav nav-sidebar">
 		<li class="active">Menu OrdenProductos</li>
 		<li><a href="${pageContext.request.contextPath}/finanzas/listarOrdenProductos">Listar Orden Productos</a></li>
 		<li><a href="${pageContext.request.contextPath}/finanzas/ingresarOrdenProducto">Ingresar Orden Producto</a></li>

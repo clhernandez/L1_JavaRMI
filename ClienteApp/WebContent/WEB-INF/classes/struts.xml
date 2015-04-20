@@ -43,6 +43,12 @@
 		<action name="listarOrdenProductos" class="cl.usach.lab1.finanzas.actions.ordenProductos.ListarOrdenProductosAction">
 			<result name="success">/finanzas/listarOrdenProductos.jsp</result>
 		</action>
+		<action name="ingresarOrden" class="cl.usach.lab1.finanzas.actions.ordenes.IngresarOrdenAction">
+			<result name="success">/finanzas/ingresarOrden.jsp</result>
+		</action>
+		<action name="listarOrdenes" class="cl.usach.lab1.finanzas.actions.ordenes.ListarOrdenesAction">
+			<result name="success">/finanzas/listarOrdenes.jsp</result>
+		</action>
 	</package>
 	
 	<package name="rrhh" extends="struts-default" namespace="/rrhh">
@@ -113,7 +119,7 @@
 			<result type="json"></result>
 		</action>
 		
-<action name="getOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.GetOrdenProductoByIdJsonAction">
+		<action name="getOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.GetOrdenProductoByIdJsonAction">
 			<result type="json"></result>
 		</action>
 		<action name="modificarOrdenProducto" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.ModificarOrdenProductoJsonAction">
@@ -122,8 +128,16 @@
 		<action name="eliminarOrdenProductoById" class="cl.usach.lab1.finanzas.actions.ordenProductos.json.EliminarOrdenProductoJsonAction">
 			<result type="json"></result>
 		</action>
-		
-				<action name="getDepartamentoById" class="cl.usach.lab1.rrhh.actions.json.departamento.GetDepartamentoByIdJsonAction">
+		<action name="getOrdenById" class="cl.usach.lab1.finanzas.actions.ordenes.json.GetOrdenByIdJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="modificarOrden" class="cl.usach.lab1.finanzas.actions.ordenes.json.ModificarOrdenJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="eliminarOrdenById" class="cl.usach.lab1.finanzas.actions.ordenes.json.EliminarOrdenJsonAction">
+			<result type="json"></result>
+		</action>
+		<action name="getDepartamentoById" class="cl.usach.lab1.rrhh.actions.json.departamento.GetDepartamentoByIdJsonAction">
 			<result type="json"></result>
 		</action>
 		<action name="modificar_departamento" class="cl.usach.lab1.rrhh.actions.json.departamento.ModificarDepartamentoJsonAction">
