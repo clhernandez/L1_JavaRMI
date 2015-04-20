@@ -3,7 +3,9 @@ package cl.usach.lab1.finanzas.rmi.interfaces;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
+
 import cl.usach.lab1.finanzas.rmi.vo.Cliente;
+import cl.usach.lab1.finanzas.rmi.vo.Orden;
 import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
 
@@ -32,6 +34,12 @@ public interface FinanzasInterface extends Remote {
 	public OrdenProducto getOrdenProductoById(int id_orden_producto) throws RemoteException;
 	public List<OrdenProducto> listarOrdenProductos() throws RemoteException;
 
-
+	//Metodos CRUD para Ordenes
+	public boolean ingresarOrden(Orden orden) throws RemoteException;
+	public boolean modificarOrden(Orden orden) throws RemoteException;
+	public boolean eliminarOrden(int id_orden) throws RemoteException;
+	public Orden getOrdenById(int id_orden) throws RemoteException;
+	public List<Orden> listarOrdenes() throws RemoteException;
+	
 }
 

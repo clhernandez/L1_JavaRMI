@@ -7,6 +7,7 @@ import java.util.List;
 import cl.usach.lab1.finanzas.rmi.conn.ConexionFinanzasRMI;
 import cl.usach.lab1.finanzas.rmi.interfaces.FinanzasInterface;
 import cl.usach.lab1.finanzas.rmi.vo.Cliente;
+import cl.usach.lab1.finanzas.rmi.vo.Orden;
 import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
 
@@ -155,4 +156,45 @@ public class ClienteFinanzasRMI {
     	}
     	return null;
     }
+    
+    // CRUD ORDENES
+   public boolean ingresarOrden(Orden orden) throws RemoteException{
+   	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+   		objetoRemoto = conexion.getServidor();
+   		return objetoRemoto.ingresarOrden(orden);
+   	}
+   	return false;
+   }
+   
+   public boolean modificarOrden(Orden orden) throws RemoteException {
+   	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+   		objetoRemoto = conexion.getServidor();
+   		return objetoRemoto.modificarOrden(orden);
+   	}
+   	return false;
+	}
+   
+   public boolean eliminarOrden(int id_orden) throws RemoteException {
+   	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+   		objetoRemoto = conexion.getServidor();
+   		return objetoRemoto.eliminarOrden(id_orden);
+   	}
+   	return false;
+	}
+   
+   public Orden getOrdenById(int id_orden) throws RemoteException{
+   	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+   		objetoRemoto = conexion.getServidor();
+   		return objetoRemoto.getOrdenById(id_orden);
+   	}
+   	return null;
+   }
+   
+   public List<Orden> listarOrdenes() throws RemoteException{
+   	if (conexion.iniciarRegistro(IPServer, Puerto, nombreReferenciaFinanzasRemota)) {
+   		objetoRemoto = conexion.getServidor();
+   		return objetoRemoto.listarOrdenes();
+   	}
+   	return null;
+   }
 }
