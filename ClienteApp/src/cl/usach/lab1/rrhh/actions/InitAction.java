@@ -77,6 +77,5 @@ public class InitAction extends ActionSupport{
 	public void setCantidadTrabajadores(int cantidadTrabajadores) {
 		this.cantidadTrabajadores = cantidadTrabajadores;
 	}
-	
-	
+
 }
