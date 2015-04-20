@@ -53,5 +53,30 @@ public class InitAction extends ActionSupport{
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+
+	public int getCantidadCargos() {
+		return cantidadCargos;
+	}
+
+	public void setCantidadCargos(int cantidadCargos) {
+		this.cantidadCargos = cantidadCargos;
+	}
+
+	public int getCantidadDepartamentos() {
+		return cantidadDepartamentos;
+	}
+
+	public void setCantidadDepartamentos(int cantidadDepartamentos) {
+		this.cantidadDepartamentos = cantidadDepartamentos;
+	}
+
+	public int getCantidadTrabajadores() {
+		return cantidadTrabajadores;
+	}
+
+	public void setCantidadTrabajadores(int cantidadTrabajadores) {
+		this.cantidadTrabajadores = cantidadTrabajadores;
+	}
+	
 	
 }
