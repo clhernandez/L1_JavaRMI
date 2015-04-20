@@ -39,7 +39,7 @@ public class Departamento implements Serializable{
 	public String getUbicacion() {
 		return ubicacion;
 	}
-	public void setUbicacion(String Ubicacion) {
+	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 		

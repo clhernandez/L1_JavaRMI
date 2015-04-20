@@ -19,15 +19,25 @@
 						<label for="input_apellido" class="sr-only">apellido</label>
 						<input name="apellido" type="text" id="input_apellido" class="form-control" placeholder="apellido"  required autofocus="">
 						<label for="input_email" class="sr-only">email</label>
-						<input name="email" type="text" id="input_email" class="form-control" placeholder="email"  autofocus="">
+						<input name="email" type="email" id="input_email" class="form-control" placeholder="email"  required autofocus="">
 						<label for="input_password" class="sr-only">password</label>
-						<input name="password" type="text" id="input_password" class="form-control" placeholder="password"  autofocus="">
+						<input name="password" type="password" id="input_password" class="form-control" placeholder="password" required autofocus="">
 						<label for="input_telefono" class="sr-only">telefono</label>
-						<input name="telefono" type="text" id="input_telefono" class="form-control" placeholder="telefono"  autofocus="">
+						<input name="telefono" type="number" id="input_telefono" class="form-control" placeholder="telefono"  required autofocus="">
 						<label for="input_fecha_contratacion" class="sr-only">fecha_contratacion</label>
-						<input name="fecha_contratacion" type="text" id="input_fecha_contratacion" class="form-control" placeholder="fecha_contratacion"  autofocus="">
+						<input name="fecha_contratacion" type="date" id="input_fecha_contratacion" class="form-control" placeholder="fecha_contratacion"  required autofocus="">
 						<label for="input_sueldo" class="sr-only">sueldo</label>
-						<input name="sueldo" type="numeric" id="input_sueldo" class="form-control" placeholder="sueldo"  autofocus="">
+						<input name="sueldo" type="number" id="input_sueldo" class="form-control" placeholder="sueldo"  required autofocus="">
+						<select name="id_departamento_fk" class="form-control" id="input_id_departamento_fk" required>
+							<c:forEach items="${departamentos}" var="dep" varStatus="loop">
+								<option value="${dep.id_departamento}">${dep.nombre_departamento}</option>
+							</c:forEach>
+						</select>
+						<select name="id_cargo_fk" class="form-control" id="input_id_cargo_fk" required>
+							<c:forEach items="${cargos}" var="crg" varStatus="loop">
+								<option value="${crg.id_cargo}">${crg.nombre_cargo}</option>
+							</c:forEach>
+						</select>
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
 				      </form>
 				    	<c:if test="${not empty msj}">
@@ -41,6 +51,9 @@
 		.table-responsive{
 			width:50%;
 			margin: 0 auto;
+		}
+		form select{
+			margin-bottom:5px;
 		}
 		.table-responsive form input{
 			margin-bottom:5px;

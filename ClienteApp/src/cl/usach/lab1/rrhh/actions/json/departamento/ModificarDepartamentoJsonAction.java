@@ -24,13 +24,6 @@ public class ModificarDepartamentoJsonAction extends ActionSupport {
 	private String nombre_departamento;
 	private String administrador;
 	private String ubicacion;
-/*	private String password;
-	private String email;
-	private String telefono;
-	private String fecha_contratacion;
-	private int id_cargo_fk;
-	private int sueldo;
-	private int id_departamento_fk;*/
 	
 	private String msj;
 
@@ -41,14 +34,7 @@ public class ModificarDepartamentoJsonAction extends ActionSupport {
 			dep.setId_departamento(id_departamento);
 			dep.setNombre_departamento(nombre_departamento);
 			dep.setAdministrador(administrador);
-			dep.setUbicacion(ubicacion);
-/*			dep.setTelefono(telefono);
-			dep.setFecha_contratacion(fecha_contratacion);
-			dep.setId_cargo_fk(id_cargo_fk);
-			dep.setSueldo(sueldo);
-			dep.setId_departamento_fk(id_departamento_fk);
-			dep.setId_trabajador(id_trabajador);*/
-			
+			dep.setUbicacion(ubicacion);			
 			if(cliente.modificarDepartamento(dep)){
 				msj= "Departamento modificado exitosamente.";
 			}else{

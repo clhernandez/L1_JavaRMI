@@ -30,8 +30,20 @@
 								<td>${trb.rut}</td>
 								<td>${trb.nombre}</td>
 								<td>${trb.apellido}</td>
-								<td>${trb.id_departamento_fk}</td>
-								<td>${trb.id_cargo_fk}</td>
+								<td>
+									<c:forEach items="${departamentos}" var="dep" varStatus="loop">
+										<c:if test="${dep.id_departamento == trb.id_departamento_fk}">
+											${dep.nombre_departamento}
+										</c:if>
+									</c:forEach>
+								</td>
+								<td>
+									<c:forEach items="${cargos}" var="crg" varStatus="loop">
+										<c:if test="${crg.id_cargo == trb.id_cargo_fk}">
+											${crg.nombre_cargo}
+										</c:if>
+									</c:forEach>
+								</td>
 								<td><a href="#" class="modificar_trabajador text-center" attr-id="${trb.rut}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
 								<td><a href="#" class="eliminar_trabajador text-center" attr-id="${trb.id_trabajador}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 							</tr>
@@ -68,6 +80,16 @@
 				<input name="fecha_contratacion" type="text" id="input_fecha_contratacion" class="form-control" placeholder="fecha_contratacion"  autofocus="">
 				<label for="input_sueldo" class="sr-only">sueldo</label>
 				<input name="sueldo" type="number" id="input_sueldo" class="form-control" placeholder="sueldo"  autofocus="">
+				<select name="id_departamento_fk" class="form-control" id="input_id_departamento_fk" required>
+					<c:forEach items="${departamentos}" var="dep" varStatus="loop">
+						<option value="${dep.id_departamento}">${dep.nombre_departamento}</option>
+					</c:forEach>
+				</select>
+				<select name="id_cargo_fk" class="form-control" id="input_id_cargo_fk" required>
+					<c:forEach items="${cargos}" var="crg" varStatus="loop">
+						<option value="${crg.id_cargo}">${crg.nombre_cargo}</option>
+					</c:forEach>
+				</select>
 		      </form>
 		      <span id='msjws' class='alert alert-info hide' ></span>
 	      </div>
@@ -99,6 +121,9 @@
 						$("#input_fecha_contratacion").val(json.fecha_contratacion);
 						$("#input_sueldo").val(json.sueldo);
 						
+						$("#input_id_cargo_fk option[value="+ json.id_cargo_fk +"]").attr("selected",true);
+						$("#input_id_departamento_fk option[value="+ json.id_departamento_fk +"]").attr("selected",true);
+						
 						$('#myModal').modal();
 					}
 				});
@@ -124,7 +149,7 @@
 				console.log(entrada);
 				if(confirm("¿Esta seguro que desea eliminar a este trabajador?")){
 					$.post("eliminarTrabajadorById", {id_trabajador: entrada}, function(json){
-						reload=true;
+						location.reload();
 					});
 					
 				}
@@ -139,6 +164,9 @@
 	</script>
 	<style>
 		#myModal form input{
+			margin-bottom:5px;
+		}
+		#myModal form select{
 			margin-bottom:5px;
 		}
 		#msjws{

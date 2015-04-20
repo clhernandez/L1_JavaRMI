@@ -27,8 +27,8 @@ public class EliminarDepartamentoJsonAction extends ActionSupport {
 	public String execute() {
 		try {
 			ClienteRrhhRMI cliente = new ClienteRrhhRMI();
-			
-			if(cliente.eliminarTrabajador(Integer.parseInt(id_departamento))){
+			System.out.println(id_departamento);
+			if(cliente.eliminarDepartamento(Integer.parseInt(id_departamento))){
 				msj= "Departamento modificado exitosamente.";
 			}else{
 				msj= "Departamento no pudo ser modificado.";

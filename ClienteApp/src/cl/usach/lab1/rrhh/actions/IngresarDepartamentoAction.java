@@ -1,14 +1,11 @@
 package cl.usach.lab1.rrhh.actions;
 
-import java.util.List;
-
 import cl.usach.lab1.rrhh.rmi.client.ClienteRrhhRMI;
 import cl.usach.lab1.rrhh.rmi.vo.Departamento;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 public class IngresarDepartamentoAction extends ActionSupport{
-	private int id_departamento;
 	private String nombre_departamento;
 	private String administrador;
 	private String ubicacion;
@@ -17,7 +14,7 @@ public class IngresarDepartamentoAction extends ActionSupport{
 	private String msj;
 	
 	public String execute() throws Exception {
-		if(id_departamento==1){
+		if(nombre_departamento!=null && nombre_departamento.equals("")==false){
 			ClienteRrhhRMI clienteRRHH = new ClienteRrhhRMI();
 			Departamento dep = new Departamento();
 			dep.setNombre_departamento(nombre_departamento);
@@ -32,17 +29,6 @@ public class IngresarDepartamentoAction extends ActionSupport{
 		
 		return SUCCESS;
 	}
-
-
-	public int getId_departamento() {
-		return id_departamento;
-	}
-
-
-	public void setId_departamento(int id_departamento) {
-		this.id_departamento = id_departamento;
-	}
-
 
 	public String getNombre_departamento() {
 		return nombre_departamento;
