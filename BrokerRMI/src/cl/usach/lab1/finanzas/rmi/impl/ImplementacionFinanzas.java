@@ -11,12 +11,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+
+
 import cl.usach.lab1.finanzas.rmi.vo.OrdenProducto;
+import cl.usach.lab1.db.DAO.finanzas.OrdenDAO;
 import cl.usach.lab1.db.DAO.finanzas.OrdenProductoDAO;
 import cl.usach.lab1.db.DAO.finanzas.ClienteDAO;
 import cl.usach.lab1.db.DAO.finanzas.ProductoDAO;
 import cl.usach.lab1.finanzas.rmi.interfaces.FinanzasInterface;
 import cl.usach.lab1.finanzas.rmi.vo.Cliente;
+import cl.usach.lab1.finanzas.rmi.vo.Orden;
 import cl.usach.lab1.finanzas.rmi.vo.Producto;
 
 
@@ -264,5 +268,86 @@ public class ImplementacionFinanzas extends UnicastRemoteObject implements
 			return ordenProductos;
 		}
 		//FIN CRUD ORDEN_PRODUCTOS
+		
+		//CRUD ORDENES
+		@Override
+		public boolean ingresarOrden(Orden orden)
+				throws RemoteException {
+			logger.log(Level.INFO, "Ingresar Orden...");
+			OrdenDAO objOPrd = new OrdenDAO();
+			boolean resultado = false;
+			try {
+				 resultado = objOPrd.ingresarOrden(orden);
+				logger.log(Level.INFO, "resultado ingresarOrden: " + resultado);
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return resultado;
+		}
+
+		@Override
+		public boolean modificarOrden(Orden orden)
+				throws RemoteException {
+			logger.log(Level.INFO, "modificar Orden...");
+			OrdenDAO objOPrd = new OrdenDAO();
+			boolean resultado = false;
+			try {
+				 resultado = objOPrd.modificarOrden(orden);
+				logger.log(Level.INFO, "resultado modificarOrden: " + resultado);
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return resultado;
+		}
+
+		@Override
+		public boolean eliminarOrden(int id_orden)
+				throws RemoteException {
+			logger.log(Level.INFO, "eliminar Orden..." + id_orden);
+			OrdenDAO objOPrd = new OrdenDAO();
+			boolean resultado = false;
+			try {
+				 resultado = objOPrd.eliminarOrden(id_orden);
+				logger.log(Level.INFO, "resultado eliminarOrden: " + resultado);
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return resultado;
+		}
+
+		@Override
+		public Orden getOrdenById(int id_orden)
+				throws RemoteException {
+			logger.log(Level.INFO, "obtener Orden...");
+			OrdenDAO objOPrd = new OrdenDAO();
+			Orden orden = null;
+			try {
+				orden = objOPrd.getOrdenById(id_orden);
+				logger.log(Level.INFO, "resultado getOrdenById: " + orden);
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return orden;
+		}
+
+		@Override
+		public List<Orden> listarOrdenes() throws RemoteException {
+			logger.log(Level.INFO, "Listar Ordenes...");
+			OrdenDAO objOPrd = new OrdenDAO ();
+			List<Orden> ordenes = null;
+			try {
+				ordenes = objOPrd.listarOrdenes();
+				logger.log(Level.INFO, "resultado listarOrdenes: " + ordenes.size());
+			} catch (ClassNotFoundException | SQLException e) {
+				logger.log(Level.WARNING, e.getMessage());
+				e.printStackTrace();
+			}
+			return ordenes;
+		}
+		//FIN CRUD ORDENES
 	
 }
